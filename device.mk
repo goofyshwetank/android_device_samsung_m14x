@@ -52,7 +52,10 @@ PRODUCT_CHARACTERISTICS := nosdcard
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
-    $(LOCAL_PATH)
+    $(LOCAL_PATH) \
+    device/samsung/s5e8535-common \
+    hardware/samsung_slsi-linaro/graphics \
+    hardware/samsung_slsi-linaro/config
 
 # Overlay placeholders
 PRODUCT_ENFORCE_RRO_TARGETS := *
@@ -68,7 +71,7 @@ PRODUCT_PACKAGES += \
 
 # Audio
 PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/configs/audio/mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths.xml
+    $(LOCAL_PATH)/configs/audio/mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths.xml
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
