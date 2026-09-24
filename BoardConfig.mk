@@ -116,6 +116,7 @@ BOARD_VENDOR := samsung
 TARGET_NO_BOOTLOADER := true
 
 # VINTF (optional files only if present)
+BUILD_BROKEN_VINTF_PRODUCT_COPY_FILES := true
 DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml
 ifneq ($(wildcard $(DEVICE_PATH)/compatibility_matrix.xml),)
 DEVICE_MATRIX_FILE := $(DEVICE_PATH)/compatibility_matrix.xml
