@@ -15,6 +15,7 @@ odm		/odm		erofs	ro	wait,logical,first_stage_mount
 /dev/block/by-name/init_boot		/init_boot	emmc	defaults	first_stage_mount,formattable
 /dev/block/by-name/vendor_boot		/vendor_boot	emmc	defaults	first_stage_mount,formattable
 /dev/block/by-name/dtbo			/dtbo		emmc	defaults	first_stage_mount,formattable
+/dev/block/by-name/recovery		/recovery	emmc	defaults	first_stage_mount
 /dev/block/by-name/metadata		/metadata	ext4	noatime,nosuid,nodev,noauto_da_alloc,discard,journal_checksum,data=ordered,errors=panic,sync	wait,formattable,first_stage_mount,check
 /dev/block/by-name/userdata		/data		f2fs	noatime,nosuid,nodev,discard,usrquota,grpquota,fsync_mode=nobarrier,reserve_root=32768,resgid=5678	latemount,wait,check,quota,reservedsize=128M,formattable
 /dev/block/by-name/userdata		/data		ext4	noatime,nosuid,nodev,noauto_da_alloc,discard,journal_checksum,data=ordered,errors=panic	latemount,wait,check,quota,formattable

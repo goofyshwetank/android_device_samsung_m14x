@@ -65,3 +65,7 @@ PRODUCT_PACKAGES += \
     android.hardware.security.keymint-service \
     android.hardware.gatekeeper@1.0-service.software
 
+
+# Audio
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/configs/audio/mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths.xml
