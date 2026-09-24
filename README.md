@@ -1,6 +1,6 @@
 # Samsung Galaxy F14 5G (SM-E146B) — LineageOS 22.1
 
-![Samsung Galaxy F14 5G](assets/sm-e146b.svg)
+![Samsung Galaxy F14 5G](assets/sm-e146b.png)
 
 **Codename:** m14x · **SoC:** Samsung Exynos 1330 (s5e8535) · **Android 15**
 
