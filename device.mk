@@ -53,9 +53,7 @@ PRODUCT_CHARACTERISTICS := nosdcard
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
-    device/samsung/s5e8535-common \
-    hardware/samsung_slsi-linaro/graphics \
-    hardware/samsung_slsi-linaro/config
+    device/samsung/s5e8535-common
 
 # Overlay placeholders
 PRODUCT_ENFORCE_RRO_TARGETS := *
@@ -78,10 +76,10 @@ DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
 # Shims
 PRODUCT_PACKAGES += \
-    libdsms \
+    libdsms_vendor \
     libepicoperator \
     libhypervintf \
-    libsensorsndkbridge
+    libsensorndkbridge_shim
 
 # Sensors
 PRODUCT_COPY_FILES += \
