@@ -39,7 +39,10 @@ BOARD_KERNEL_IMAGE_NAME := Image
 BOARD_KERNEL_CMDLINE := androidboot.selinux=permissive androidboot.hardware=s5e8535 firmware_class.path=/vendor/firmware
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
-TARGET_KERNEL_SOURCE := kernel/samsung/s5e8535
+TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilts/kernel
+BOARD_PREBUILT_DTBIMAGE_DIR := $(DEVICE_PATH)/prebuilts/dtb
+BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)/prebuilts/dtbo.img
+# TARGET_KERNEL_SOURCE := kernel/samsung/s5e8535
 TARGET_KERNEL_CONFIG := s5e8535-m14xnsxx_defconfig
 TARGET_KERNEL_CLANG_COMPILE := true
 TARGET_KERNEL_LLVM_BINUTILS := true
