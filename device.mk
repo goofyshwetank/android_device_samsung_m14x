@@ -69,3 +69,25 @@ PRODUCT_PACKAGES += \
 # Audio
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/configs/audio/mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths.xml
+
+# Overlays
+DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
+
+# Shims
+PRODUCT_PACKAGES += \
+    libdsms \
+    libepicoperator \
+    libhypervintf \
+    libsensorsndkbridge
+
+# Sensors
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/sensors/hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf
+
+# RIL
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/ril/sehradiomanager.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sehradiomanager.conf
+
+# RAM Plus
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/etc/init.ramplus.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.ramplus.rc
