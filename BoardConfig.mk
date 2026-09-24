@@ -1,0 +1,139 @@
+# Copyright (C) 2026 The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+
+DEVICE_PATH := device/samsung/m14x
+
+# Architecture
+TARGET_ARCH := arm64
+TARGET_ARCH_VARIANT := armv8-2a
+TARGET_CPU_ABI := arm64-v8a
+TARGET_CPU_ABI2 :=
+TARGET_CPU_VARIANT := cortex-a76
+
+TARGET_2ND_ARCH := arm
+TARGET_2ND_ARCH_VARIANT := armv8-2a
+TARGET_2ND_CPU_ABI := armeabi-v7a
+TARGET_2ND_CPU_ABI2 := armeabi
+TARGET_2ND_CPU_VARIANT := cortex-a55
+
+# Platform / SoC (Exynos 1330)
+TARGET_BOARD_PLATFORM := erd8535
+TARGET_BOOTLOADER_BOARD_NAME := s5e8535
+TARGET_SOC := s5e8535
+
+# Build broken rules for proprietary prebuilts
+BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
+BUILD_BROKEN_DUP_RULES := true
+BUILD_BROKEN_PREBUILT_ELF_FILES := true
+SELINUX_IGNORE_NEVERALLOWS := true
+
+# Flatten APEXes for bring-up (bypass apexd activation)
+TARGET_FLATTEN_APEX := true
+
+
+
+# Kernel
+BOARD_KERNEL_BASE := 0x10000000
+BOARD_KERNEL_PAGESIZE := 4096
+BOARD_KERNEL_IMAGE_NAME := Image
+BOARD_KERNEL_CMDLINE := androidboot.selinux=permissive androidboot.hardware=s5e8535 firmware_class.path=/vendor/firmware
+TARGET_KERNEL_ARCH := arm64
+TARGET_KERNEL_HEADER_ARCH := arm64
+TARGET_KERNEL_SOURCE := kernel/samsung/s5e8535
+TARGET_KERNEL_CONFIG := s5e8535-m14xnsxx_defconfig
+TARGET_KERNEL_CLANG_COMPILE := true
+TARGET_KERNEL_LLVM_BINUTILS := true
+# Stock Samsung kernel + modern Clang: disable -Werror via make flags
+TARGET_KERNEL_ADDITIONAL_FLAGS := LLVM=1 LLVM_IAS=1 TARGET_SOC=s5e8535 KCFLAGS="-Wno-error -Wno-strict-prototypes -Wno-implicit-int"
+BOARD_BOOT_HEADER_VERSION := 4
+BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
+
+
+# Boot / ramdisk (Android 13+ GKI style)
+BOARD_USES_GENERIC_KERNEL_IMAGE := true
+BOARD_MOVE_GKI_AVB_KEYS_TO_VENDOR_BOOT := true
+BOARD_INCLUDE_DTB_IN_BOOTIMG := true
+BOARD_USES_RECOVERY_AS_BOOT := false
+
+# Partitions (from live device / stock AP — refine after measuring images)
+BOARD_FLASH_BLOCK_SIZE := 4096
+BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
+BOARD_INIT_BOOT_IMAGE_PARTITION_SIZE := 16777216
+BOARD_VENDOR_BOOTIMAGE_PARTITION_SIZE := 33554432
+BOARD_DTBOIMG_PARTITION_SIZE := 8388608
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 100663296
+BOARD_CACHEIMAGE_PARTITION_SIZE := 209715200
+BOARD_SUPER_PARTITION_SIZE := 8287944704
+BOARD_SUPER_PARTITION_GROUPS := samsung_dynamic_partitions
+BOARD_SAMSUNG_DYNAMIC_PARTITIONS_PARTITION_LIST := system system_ext vendor product odm vendor_dlkm system_dlkm
+BOARD_SAMSUNG_DYNAMIC_PARTITIONS_SIZE := 8283750400
+
+BOARD_USES_METADATA_PARTITION := true
+BOARD_USES_VENDOR_DLKMIMAGE := true
+BOARD_USES_SYSTEM_DLKMIMAGE := true
+
+# Filesystems
+BOARD_SYSTEMIMAGE_FILE_SYSTEM_TYPE := erofs
+BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := erofs
+BOARD_PRODUCTIMAGE_FILE_SYSTEM_TYPE := erofs
+BOARD_ODMIMAGE_FILE_SYSTEM_TYPE := erofs
+BOARD_SYSTEM_EXTIMAGE_FILE_SYSTEM_TYPE := erofs
+BOARD_VENDOR_DLKMIMAGE_FILE_SYSTEM_TYPE := erofs
+BOARD_SYSTEM_DLKMIMAGE_FILE_SYSTEM_TYPE := erofs
+BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := f2fs
+BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
+
+TARGET_COPY_OUT_VENDOR := vendor
+TARGET_COPY_OUT_PRODUCT := product
+TARGET_COPY_OUT_SYSTEM_EXT := system_ext
+TARGET_COPY_OUT_ODM := odm
+TARGET_COPY_OUT_VENDOR_DLKM := vendor_dlkm
+TARGET_COPY_OUT_SYSTEM_DLKM := system_dlkm
+
+# AVB
+BOARD_AVB_ENABLE := true
+BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 3
+BOARD_AVB_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
+BOARD_AVB_RECOVERY_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
+BOARD_AVB_RECOVERY_ALGORITHM := SHA256_RSA4096
+BOARD_AVB_RECOVERY_ROLLBACK_INDEX := 1
+BOARD_AVB_RECOVERY_ROLLBACK_INDEX_LOCATION := 1
+
+# Security Patch
+VENDOR_SECURITY_PATCH := 2026-05-05
+
+# Display (F14 5G)
+TARGET_SCREEN_DENSITY := 450
+
+# Recovery
+TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.s5e8535
+TARGET_USERIMAGES_USE_EXT4 := true
+TARGET_USERIMAGES_USE_F2FS := true
+
+# Samsung
+BOARD_VENDOR := samsung
+TARGET_NO_BOOTLOADER := true
+
+# VINTF (optional files only if present)
+DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml
+ifneq ($(wildcard $(DEVICE_PATH)/compatibility_matrix.xml),)
+DEVICE_MATRIX_FILE := $(DEVICE_PATH)/compatibility_matrix.xml
+endif
+ifneq ($(wildcard $(DEVICE_PATH)/framework_compatibility_matrix.xml),)
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := $(DEVICE_PATH)/framework_compatibility_matrix.xml
+endif
+
+# Properties
+ifneq ($(wildcard $(DEVICE_PATH)/system.prop),)
+TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
+endif
+ifneq ($(wildcard $(DEVICE_PATH)/vendor.prop),)
+TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
+endif
+
+# SELinux
+BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
+
+# Inherit from proprietary vendor when present
+-include vendor/samsung/m14x/BoardConfigVendor.mk

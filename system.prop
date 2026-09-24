@@ -1,0 +1,7 @@
+# System properties
+ro.sf.lcd_density=450
+ro.product.first_api_level=33
+persist.sys.usb.config=adb
+sys.usb.controller=13200000.dwc3
+sys.usb.configfs=1
+ro.boot.usbcontroller=13200000.dwc3

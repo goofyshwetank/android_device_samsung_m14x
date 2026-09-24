@@ -1,0 +1,50 @@
+on early-init
+    mount configfs none /config
+    mkdir /config/usb_gadget/g1 0770 shell shell
+    mkdir /config/usb_gadget/g1/strings/0x409 0770 shell shell
+    write /config/usb_gadget/g1/bcdUSB 0x0200
+    write /config/usb_gadget/g1/idVendor 0x04e8
+    write /config/usb_gadget/g1/idProduct 0x6860
+    write /config/usb_gadget/g1/bcdDevice 0x0400
+    write /config/usb_gadget/g1/strings/0x409/serialnumber 0123456789ABCDEF
+    write /config/usb_gadget/g1/strings/0x409/manufacturer Samsung
+    write /config/usb_gadget/g1/strings/0x409/product Samsung_Galaxy_M14_5G
+    mkdir /config/usb_gadget/g1/functions/ffs.adb
+    mkdir /config/usb_gadget/g1/functions/ffs.mtp
+    mkdir /config/usb_gadget/g1/configs/b.1 0770 shell shell
+    mkdir /config/usb_gadget/g1/configs/b.1/strings/0x409 0770 shell shell
+    write /config/usb_gadget/g1/os_desc/use 1
+    write /config/usb_gadget/g1/os_desc/b_vendor_code 0x1
+    write /config/usb_gadget/g1/os_desc/qw_sign MSFT100
+    mkdir /dev/usb-ffs 0775 shell shell
+    mkdir /dev/usb-ffs/adb 0770 shell shell
+    mount functionfs adb /dev/usb-ffs/adb rmode=0770,fmode=0660,uid=2000,gid=2000
+    setprop sys.usb.configfs 1
+    setprop sys.usb.controller 13200000.dwc3
+    setprop ro.boot.usbcontroller 13200000.dwc3
+    setprop sys.usb.config adb
+
+    mkdir /mnt/vendor/efs 0771 radio system
+    mkdir /mnt/vendor/cpefs 0771 radio system
+    mkdir /mnt/vendor/persist 0771 system system
+    mount debugfs /sys/kernel/debug /sys/kernel/debug
+
+on init
+    setprop sys.usb.configfs 1
+    setprop sys.usb.controller 13200000.dwc3
+    setprop ro.boot.usbcontroller 13200000.dwc3
+    setprop sys.usb.config adb
+
+on boot
+    setprop sys.usb.configfs 1
+    setprop sys.usb.controller 13200000.dwc3
+    setprop sys.usb.config adb
+    start adbd
+
+service console /system/bin/sh
+    class core
+    console
+    user root
+    group root shell log readproc
+    seclabel u:r:shell:s0
+    setenv HOSTNAME lineage_m14x

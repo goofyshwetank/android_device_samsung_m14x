@@ -1,0 +1,4 @@
+allow kernel vendor_file:dir r_dir_perms;
+allow kernel vendor_file:file r_file_perms;
+allow kernel vendor_configs_file:dir r_dir_perms;
+allow kernel vendor_configs_file:file r_file_perms;
