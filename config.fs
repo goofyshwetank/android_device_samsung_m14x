@@ -1,0 +1,2 @@
+[AID_VENDOR_SECDIR]
+value:5050

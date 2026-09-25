@@ -92,3 +92,6 @@ PRODUCT_COPY_FILES += \
 # RAM Plus
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/etc/init.ramplus.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.ramplus.rc
+
+# Vendor filesystem config for Samsung-specific AIDs
+TARGET_FS_CONFIG_GEN := $(LOCAL_PATH)/config.fs
