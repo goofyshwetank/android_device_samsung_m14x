@@ -36,7 +36,7 @@ TARGET_FLATTEN_APEX := true
 BOARD_KERNEL_BASE := 0x10000000
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_IMAGE_NAME := Image
-BOARD_KERNEL_CMDLINE := androidboot.selinux=permissive androidboot.hardware=s5e8535 firmware_class.path=/vendor/firmware
+BOARD_KERNEL_CMDLINE := androidboot.hardware=s5e8535 firmware_class.path=/vendor/firmware
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilts/kernel
@@ -125,7 +125,7 @@ ifneq ($(wildcard $(DEVICE_PATH)/compatibility_matrix.xml),)
 DEVICE_MATRIX_FILE := $(DEVICE_PATH)/compatibility_matrix.xml
 endif
 ifneq ($(wildcard $(DEVICE_PATH)/framework_compatibility_matrix.xml),)
-DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := $(DEVICE_PATH)/framework_compatibility_matrix.xml
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += $(DEVICE_PATH)/framework_compatibility_matrix.xml
 endif
 
 # Properties
@@ -137,7 +137,7 @@ TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
 endif
 
 # SELinux
-BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
+BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
 
 # Inherit from proprietary vendor when present
 -include vendor/samsung/m14x/BoardConfigVendor.mk
