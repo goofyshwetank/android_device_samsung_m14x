@@ -45,3 +45,9 @@ init_daemon_domain(tzdaemon)
 
 # WiFi EFS file type
 type wifi_efs_file, file_type;
+
+# Additional sysfs types referenced in genfs_contexts
+type sysfs_iio, sysfs_type, fs_type;
+type sysfs_bt_writable, sysfs_type, fs_type;
+type sysfs_power_writable, sysfs_type, fs_type;
+type sysfs_sensors_writable, sysfs_type, fs_type;
