@@ -141,3 +141,4 @@ BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
 
 # Inherit from proprietary vendor when present
 -include vendor/samsung/m14x/BoardConfigVendor.mk
+BOARD_GENFS_LABELS_VERSION := 202504
