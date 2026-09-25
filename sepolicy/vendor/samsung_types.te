@@ -1,0 +1,34 @@
+# Samsung/Exynos device-specific type declarations
+# sysfs types
+type sysfs_battery, sysfs_type, fs_type;
+type sysfs_battery_writable, sysfs_type, fs_type;
+type sysfs_backlight_writable, sysfs_type, fs_type;
+type sysfs_gps_writable, sysfs_type, fs_type;
+type sysfs_lcd_writable, sysfs_type, fs_type;
+type sysfs_sec_gps, sysfs_type, fs_type;
+
+# Samsung EFS partition file types
+type app_efs_file, file_type;
+type imei_efs_file, file_type;
+type prov_efs_file, file_type;
+type sec_efs_file, file_type;
+type tee_efs_file, file_type;
+
+# Vendor data directory types
+type conn_vendor_data_file, file_type, vendor_file_type, data_file_type;
+type log_vendor_data_file, file_type, vendor_file_type, data_file_type;
+type wifi_vendor_data_file, file_type, vendor_file_type, data_file_type;
+
+# Device node types
+type cpefs_block_device, dev_type;
+type efs_block_device, dev_type;
+type pm_qos_device, dev_type;
+type tz_device, dev_type;
+
+# gpsd domain
+type gpsd, domain;
+type gpsd_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(gpsd)
+
+# VND service type
+type vendor_surfaceflinger_vndservice, vndservice_manager_type;
