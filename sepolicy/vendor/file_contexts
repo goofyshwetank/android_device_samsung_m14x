@@ -1,3 +1,10 @@
 /vendor/bin/secril_config_svc    u:object_r:secril_config_svc_exec:s0
 /vendor/bin/cbd    u:object_r:cbd_exec:s0
 /vendor/bin/hw/android\.hardware\.drm-service\.widevine    u:object_r:hal_drm_widevine_exec:s0
+/vendor/bin/tzdaemon    u:object_r:tzdaemon_exec:s0
+/vendor/bin/tzts_daemon    u:object_r:tzts_daemon_exec:s0
+/vendor/bin/vendor\.samsung\.hardware\.security\.fkeymaster-service    u:object_r:fkeymaster_default_exec:s0
+/vendor/bin/vendor\.samsung\.hardware\.security\.proca@2\.0-service    u:object_r:proca_exec:s0
+/vendor/bin/vaultkeeperd    u:object_r:vaultkeeper_exec:s0
+/vendor/bin/vendor\.samsung\.hardware\.security\.vaultkeeper@2\.0-service    u:object_r:vaultkeeper_hal_exec:s0
+/vendor/bin/vendor\.samsung\.hardware\.security\.engmode@1\.0-service    u:object_r:engmode_hal_exec:s0

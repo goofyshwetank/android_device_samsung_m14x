@@ -51,3 +51,33 @@ type sysfs_iio, sysfs_type, fs_type;
 type sysfs_bt_writable, sysfs_type, fs_type;
 type sysfs_power_writable, sysfs_type, fs_type;
 type sysfs_sensors_writable, sysfs_type, fs_type;
+
+# Samsung Teegris TZTS daemon
+type tzts_daemon, domain;
+type tzts_daemon_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(tzts_daemon)
+
+# Samsung fast keymint (fkeymaster)
+type fkeymaster_default, domain;
+type fkeymaster_default_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(fkeymaster_default)
+
+# Samsung process authenticator (proca)
+type proca, domain;
+type proca_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(proca)
+
+# Samsung vault keeper daemon
+type vaultkeeper, domain;
+type vaultkeeper_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(vaultkeeper)
+
+# Samsung vault keeper HAL
+type vaultkeeper_hal, domain;
+type vaultkeeper_hal_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(vaultkeeper_hal)
+
+# Samsung engineering mode HAL
+type engmode_hal, domain;
+type engmode_hal_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(engmode_hal)
