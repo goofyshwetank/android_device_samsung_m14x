@@ -81,3 +81,8 @@ init_daemon_domain(vaultkeeper_hal)
 type engmode_hal, domain;
 type engmode_hal_exec, exec_type, vendor_file_type, file_type;
 init_daemon_domain(engmode_hal)
+
+# Samsung WLBT (WiFi/BT) daemon
+type wlbtd, domain;
+type wlbtd_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(wlbtd)

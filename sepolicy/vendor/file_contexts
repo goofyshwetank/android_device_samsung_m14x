@@ -8,3 +8,4 @@
 /vendor/bin/vaultkeeperd    u:object_r:vaultkeeper_exec:s0
 /vendor/bin/vendor\.samsung\.hardware\.security\.vaultkeeper@2\.0-service    u:object_r:vaultkeeper_hal_exec:s0
 /vendor/bin/vendor\.samsung\.hardware\.security\.engmode@1\.0-service    u:object_r:engmode_hal_exec:s0
+/vendor/bin/wlbtd    u:object_r:wlbtd_exec:s0

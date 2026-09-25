@@ -13,3 +13,4 @@ permissive proca;
 permissive vaultkeeper;
 permissive vaultkeeper_hal;
 permissive engmode_hal;
+permissive wlbtd;
