@@ -123,11 +123,15 @@
             <name>IKeyMintDevice</name>
             <instance>default</instance>
         </interface>
+        <fqname>IKeyMintDevice/default</fqname>
+    </hal>
+    <hal format="aidl" override="true">
+        <name>android.hardware.security.rkp</name>
+        <version>3</version>
         <interface>
             <name>IRemotelyProvisionedComponent</name>
             <instance>default</instance>
         </interface>
-        <fqname>IKeyMintDevice/default</fqname>
         <fqname>IRemotelyProvisionedComponent/default</fqname>
     </hal>
     <hal format="aidl" override="true">
