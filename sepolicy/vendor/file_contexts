@@ -1,1 +1,2 @@
 /vendor/bin/secril_config_svc    u:object_r:secril_config_svc_exec:s0
+/vendor/bin/cbd    u:object_r:cbd_exec:s0
