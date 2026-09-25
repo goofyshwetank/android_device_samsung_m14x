@@ -1,2 +1,3 @@
 /vendor/bin/secril_config_svc    u:object_r:secril_config_svc_exec:s0
 /vendor/bin/cbd    u:object_r:cbd_exec:s0
+/vendor/bin/hw/android\.hardware\.drm-service\.widevine    u:object_r:hal_drm_widevine_exec:s0

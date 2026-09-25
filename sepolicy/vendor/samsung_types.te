@@ -32,3 +32,16 @@ init_daemon_domain(gpsd)
 
 # VND service type
 type vendor_surfaceflinger_vndservice, vndservice_manager_type;
+
+# Widevine DRM HAL domain (not in AOSP platform policy)
+type hal_drm_widevine, domain;
+type hal_drm_widevine_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(hal_drm_widevine)
+
+# TEE daemon domain (Samsung TrustZone)
+type tzdaemon, domain;
+type tzdaemon_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(tzdaemon)
+
+# WiFi EFS file type
+type wifi_efs_file, file_type;
