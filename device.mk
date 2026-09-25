@@ -95,3 +95,6 @@ PRODUCT_COPY_FILES += \
 
 # Vendor filesystem config for Samsung-specific AIDs
 TARGET_FS_CONFIG_GEN := $(LOCAL_PATH)/config.fs
+
+# Samsung-specific framework compatibility matrix fragment
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += $(LOCAL_PATH)/device_framework_matrix.xml
