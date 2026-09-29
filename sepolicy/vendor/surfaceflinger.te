@@ -3,3 +3,6 @@ r_dir_file(surfaceflinger, hal_graphics_composer_default);
 allow surfaceflinger unlabeled:filesystem getattr;
 
 get_prop(surfaceflinger, vendor_hwc_prop)
+
+# Allow surfaceflinger to load vendor shared libraries (libion_exynos.so, etc)
+allow surfaceflinger vendor_file:file { read open getattr map execute };

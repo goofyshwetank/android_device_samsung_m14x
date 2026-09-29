@@ -1,1 +1,4 @@
 allow zygote system_data_file:dir create_file_perms;
+
+# Allow zygote/mali to load vendor shared libraries
+allow zygote vendor_file:file { read open getattr map };

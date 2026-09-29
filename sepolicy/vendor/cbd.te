@@ -5,3 +5,8 @@ init_daemon_domain(cbd)
 allow cbd self:capability2 block_suspend;
 
 set_prop(cbd, vendor_radio_prop)
+
+# Allow cbd modem daemon capabilities and file access
+allow cbd self:capability setuid;
+allow cbd kmsg_device:chr_file { read write open };
+allow cbd proc_cmdline:file { read open getattr };
