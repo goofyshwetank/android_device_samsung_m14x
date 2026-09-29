@@ -64,7 +64,11 @@ $(call inherit-product-if-exists, vendor/samsung/m14x/m14x-vendor.mk)
 # Security: Software KeyMint and Gatekeeper
 PRODUCT_PACKAGES += \
     android.hardware.security.keymint-service \
-    android.hardware.gatekeeper@1.0-service.software
+    android.hardware.gatekeeper@1.0-service.software \
+    libprocessgroup
+
+# Vendor libs needed by Samsung proprietary HAL binaries (stub pulls vendor variants)
+PRODUCT_PACKAGES += libvendor_samsung_deps
 
 
 # Audio
@@ -96,3 +100,6 @@ PRODUCT_COPY_FILES += \
 # Vendor filesystem config for Samsung-specific AIDs
 TARGET_FS_CONFIG_GEN := $(LOCAL_PATH)/config.fs
 
+
+# VNDK apex from stock — required for Android 16 linkerconfig VNDK namespace
+PRODUCT_COPY_FILES += $(LOCAL_PATH)/apex/com.android.vndk.v33.apex:$(TARGET_COPY_OUT_SYSTEM)/apex/com.android.vndk.v33.apex

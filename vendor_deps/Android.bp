@@ -1,0 +1,18 @@
+cc_library_shared {
+    name: "libvendor_samsung_deps",
+    vendor: true,
+    shared_libs: [
+        "libprocessgroup",
+        "libxml2",
+        "libcurl",
+        "libstagefright_omx",
+        "libstagefright_xmlparser",
+        "libwifi-system-iface",
+        "android.hardware.drm-V1-ndk",
+        "android.hardware.health-V1-ndk",
+        "android.hardware.memtrack-V1-ndk",
+        "android.hardware.wifi.supplicant-V1-ndk",
+        "android.hidl.token@1.0-utils",
+    ],
+    srcs: ["empty.cpp"],
+}
