@@ -13,6 +13,8 @@ cc_library_shared {
         "android.hardware.memtrack-V1-ndk",
         "android.hardware.wifi.supplicant-V1-ndk",
         "android.hidl.token@1.0-utils",
+        "libfmq",
+        "libsync",
     ],
     srcs: ["empty.cpp"],
 }
