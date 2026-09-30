@@ -50,6 +50,55 @@ blob_fixups: blob_fixups_user_type = {
         'vendor/lib64/libwifi-hal-samsung.so',
     ): blob_fixup()
         .fix_soname(),
+    'vendor/etc/init/android.hardware.bluetooth@1.1-service.rc': blob_fixup()
+        .regex_replace('(?m)bluetooth@1.1-service$', 'bluetooth@1.1-service.samsung'),
+    'vendor/etc/init/vendor.samsung.rild.rc': blob_fixup()
+        .regex_replace('(?m)/vendor/bin/hw/rild$', '/vendor/bin/hw/rild_exynos'),
+    'vendor/bin/hw/android.hardware.bluetooth@1.1-service.samsung': blob_fixup()
+        .replace_needed('android.hardware.bluetooth@1.0-impl.so', 'android.hardware.bluetooth@1.0-impl-samsung.so'),
+    'vendor/lib64/hw/android.hardware.bluetooth@1.0-impl-samsung.so': blob_fixup()
+        .fix_soname()
+        .binary_regex_replace(b'libbt-vendor.so\x00', b'libbt-exynos.so\x00'),
+    (
+        'vendor/lib64/libbt-exynos.so',
+        'vendor/lib64/lib_profiler-samsung.so',
+        'vendor/lib/libtinyalsa-samsung.so',
+        'vendor/lib64/libtinyalsa-samsung.so',
+    ): blob_fixup()
+        .fix_soname(),
+    (
+        'vendor/lib/libaudioroute-samsung.so',
+        'vendor/lib64/libaudioroute-samsung.so',
+    ): blob_fixup()
+        .fix_soname()
+        .replace_needed('libtinyalsa.so', 'libtinyalsa-samsung.so'),
+    (
+        'vendor/lib/libaboxpcmdump.so',
+        'vendor/lib64/libaboxpcmdump.so',
+        'vendor/lib/libaudioparamupdate.so',
+        'vendor/lib64/libaudioparamupdate.so',
+        'vendor/lib/libaudioproxy2.so',
+        'vendor/lib64/libaudioproxy2.so',
+        'vendor/lib/hw/audio.primary.s5e8535.so',
+        'vendor/lib64/hw/audio.primary.s5e8535.so',
+        'vendor/lib/libalsautils_sec.so',
+        'vendor/lib64/libalsautils_sec.so',
+        'vendor/lib/soundfx/libaudioeffectoffload.so',
+        'vendor/lib64/soundfx/libaudioeffectoffload.so',
+    ): blob_fixup()
+        .replace_needed('libaudioroute.so', 'libaudioroute-samsung.so')
+        .replace_needed('libtinyalsa.so', 'libtinyalsa-samsung.so'),
+    (
+        'vendor/lib64/libsamsungcamerahalutils.so',
+        'vendor/lib64/libsamsungcamerahwl_impl.so',
+        'vendor/lib64/libsamsungcamerahal.so',
+        'vendor/bin/hw/vendor.samsung.hardware.camera.provider-service_64',
+    ): blob_fixup()
+        .replace_needed('lib_profiler.so', 'lib_profiler-samsung.so'),
+    'vendor/lib64/unihal_android.so': blob_fixup()
+        .add_needed('libui_shim.so'),
+    'vendor/lib64/libsensorlistener.so': blob_fixup()
+        .add_needed('libsensorndkbridge_shim.so'),
 }
 
 module = ExtractUtilsModule(

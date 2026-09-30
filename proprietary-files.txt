@@ -21,7 +21,7 @@ vendor/bin/epic
 vendor/bin/ffcirrus
 vendor/bin/fsdbg_vendor
 vendor/bin/hostapd_cli
-vendor/bin/hw/android.hardware.bluetooth@1.1-service
+vendor/bin/hw/android.hardware.bluetooth@1.1-service:vendor/bin/hw/android.hardware.bluetooth@1.1-service.samsung
 vendor/bin/hw/android.hardware.cas@1.2-service-lazy
 # Replaced by the AOSP builds listed in device.mk
 # vendor/bin/hw/android.hardware.audio.service
@@ -43,7 +43,7 @@ vendor/bin/hw/gpsd
 vendor/bin/hw/hostapd
 vendor/bin/hw/macloader
 vendor/bin/hw/mfgloader
-vendor/bin/hw/rild
+vendor/bin/hw/rild:vendor/bin/hw/rild_exynos
 vendor/bin/hw/samsung.hardware.media.c2@1.2-service
 vendor/bin/hw/samsung.software.media.c2@1.0-service
 vendor/bin/hw/secaudiohalaidl
@@ -584,7 +584,6 @@ vendor/lib/libaudioparamupdate.so
 vendor/lib/libaudioproxy2.so
 vendor/lib/libavservices_minijail.so
 vendor/lib/libbeautyshot.arcsoft.so
-vendor/lib/libbt-vendor.so
 vendor/lib/libcamera2ndk_vendor.so
 vendor/lib/libcodec2_hidl@1.0.so
 vendor/lib/libcodec2_hidl@1.1.so
@@ -742,10 +741,10 @@ vendor/lib/vendor.samsung.hardware.tlc.ucm@2.0.so
 vendor/lib/vendor.samsung_slsi.hardware.epic@1.0.so
 vendor/lib/vendor.samsung_slsi.telephony.hardware.oemservice@1.0.so
 vendor/lib/vintf-codecsolution-V2-ndk.so
-vendor/lib/vndk/libaudioroute.so
+vendor/lib/vndk/libaudioroute.so:vendor/lib/libaudioroute-samsung.so
 vendor/lib/vndk/libstagefright_omx_utils.so
 vendor/lib/vndk/libstagefright_xmlparser.so
-vendor/lib/vndk/libtinyalsa.so
+vendor/lib/vndk/libtinyalsa.so:vendor/lib/libtinyalsa-samsung.so
 vendor/lib64/android.frameworks.cameraservice.common@2.0.so
 vendor/lib64/android.frameworks.cameraservice.device@2.0.so
 vendor/lib64/android.frameworks.cameraservice.device@2.1.so
@@ -829,7 +828,7 @@ vendor/lib64/hw/android.hardware.audio.effect@2.0-impl.so
 vendor/lib64/hw/android.hardware.audio.effect@7.0-impl.so
 vendor/lib64/hw/android.hardware.audio@2.0-impl.so
 vendor/lib64/hw/android.hardware.audio@7.0-impl.so
-vendor/lib64/hw/android.hardware.bluetooth@1.0-impl.so
+vendor/lib64/hw/android.hardware.bluetooth@1.0-impl.so:vendor/lib64/hw/android.hardware.bluetooth@1.0-impl-samsung.so
 vendor/lib64/hw/android.hardware.gatekeeper@1.0-impl.so
 vendor/lib64/hw/android.hardware.graphics.allocator@4.0-impl.so
 vendor/lib64/hw/android.hardware.graphics.mapper@4.0-impl.so
@@ -883,7 +882,7 @@ vendor/lib64/lib_SoundAlive_AlbumArt_ver105.so
 vendor/lib64/lib_SoundAlive_SRC384_ver320.so
 vendor/lib64/lib_SoundAlive_play_plus_ver500.so
 vendor/lib64/lib_SoundBooster_ver1100.so
-vendor/lib64/lib_profiler.so
+vendor/lib64/lib_profiler.so:vendor/lib64/lib_profiler-samsung.so
 vendor/lib64/lib_soundaliveresampler.so
 vendor/lib64/lib_supernight_interface.so
 vendor/lib64/libaboxpcmdump.so
@@ -899,7 +898,7 @@ vendor/lib64/libaudioproxy2.so
 vendor/lib64/libavservices_minijail.so
 vendor/lib64/libbeautyshot.arcsoft.so
 vendor/lib64/libbinderdebug.so
-vendor/lib64/libbt-vendor.so
+vendor/lib64/libbt-vendor.so:vendor/lib64/libbt-exynos.so
 vendor/lib64/libcamera2ndk_vendor.so
 vendor/lib64/libcodec2_hidl@1.0.so
 vendor/lib64/libcodec2_hidl@1.1.so
@@ -1158,8 +1157,8 @@ vendor/lib64/vendor.samsung_slsi.hardware.ExynosA2DPOffload@2.0.so
 vendor/lib64/vendor.samsung_slsi.hardware.ExynosHWCServiceTW@1.0.so
 vendor/lib64/vendor.samsung_slsi.hardware.epic@1.0.so
 vendor/lib64/vendor.samsung_slsi.telephony.hardware.oemservice@1.0.so
-vendor/lib64/vndk/libaudioroute.so
-vendor/lib64/vndk/libtinyalsa.so
+vendor/lib64/vndk/libaudioroute.so:vendor/lib64/libaudioroute-samsung.so
+vendor/lib64/vndk/libtinyalsa.so:vendor/lib64/libtinyalsa-samsung.so
 vendor/odm_dlkm/etc/build.prop
 vendor/recovery-from-boot.p
 vendor/saiv/image_understanding/db/aig_classifier/aig_classifier_cnn.tf

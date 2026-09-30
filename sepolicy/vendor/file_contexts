@@ -486,3 +486,4 @@
 /vendor/bin/vendor\.samsung\.hardware\.security\.vaultkeeper@2\.0-service      u:object_r:vaultkeeperd_exec:s0
 /vendor/bin/vendor\.samsung\.hardware\.security\.hdcp\.wifidisplay-service    u:object_r:hal_hdcp_default_exec:s0
 /vendor/bin/vendor\.samsung\.hardware\.security\.hdcp\.wifidisplay@1\.0-service    u:object_r:hal_hdcp_default_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.bluetooth@1\.1-service\.samsung u:object_r:hal_bluetooth_default_exec:s0

@@ -1,2 +1,9 @@
 soong_namespace {
 }
+
+cc_library_shared {
+    name: "libsensorndkbridge_shim",
+    srcs: ["shims/libsensorndkbridge/ALooper.cpp"],
+    shared_libs: ["libsensorndkbridge"],
+    vendor: true,
+}

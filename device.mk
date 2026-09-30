@@ -36,6 +36,7 @@ PRODUCT_PACKAGES += \
     android.hardware.graphics.composer@2.4-service \
     android.hardware.memtrack-service.example \
     android.hardware.sensors@2.0-service.multihal \
+    libsensorndkbridge_shim \
     vndservicemanager \
     wpa_supplicant
 
@@ -74,6 +75,7 @@ PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH)
 
 # Overlay placeholders
+DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 PRODUCT_ENFORCE_RRO_TARGETS := *
 
 # Inherit proprietary blobs when extracted
