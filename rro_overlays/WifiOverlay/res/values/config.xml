@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Soft AP only offers 5GHz when the chipset is also marked 5GHz capable -->
+    <bool translatable="false" name="config_wifi5ghzSupport">true</bool>
+    <bool translatable="false" name="config_wifi_softap_ieee80211ac_supported">true</bool>
+</resources>

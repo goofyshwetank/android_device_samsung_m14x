@@ -38,6 +38,8 @@ PRODUCT_PACKAGES += \
     android.hardware.graphics.composer@2.4-service \
     android.hardware.memtrack-service.example \
     android.hardware.sensors@2.0-service.multihal \
+    hostapd \
+    WifiOverlayM14x \
     libsecc2_shim \
     libsensorndkbridge_shim \
     vndservicemanager \
