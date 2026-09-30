@@ -24,6 +24,12 @@ blob_fixups: blob_fixups_user_type = {
         .regex_replace(
             r'\(genfscon udf "/" \(u object_r vfat \(\(s0\) \(s0\)\)\)\)\n?',
             '',
+        )
+        .add_line_if_missing('(allow hal_gatekeeper_default hal_sharedsecret_service_33_0 (service_manager (add find)))')
+        .add_line_if_missing('(allow keystore_33_0 hal_gatekeeper_default (binder (call)))'),
+    'vendor/etc/selinux/vendor_service_contexts': blob_fixup()
+        .add_line_if_missing(
+            'android.hardware.security.sharedsecret.ISharedSecret/gatekeeper u:object_r:hal_sharedsecret_service:s0'
         ),
     (
         'vendor/lib/libexynosgraphicbuffer.so',
