@@ -704,7 +704,7 @@ vendor/lib/libvideobeauty_interface.so
 vendor/lib/libvorbisidec.so
 vendor/lib/libvpx.so
 vendor/lib/libvra.so
-vendor/lib/libwifi-hal.so
+vendor/lib/libwifi-hal.so:vendor/lib/libwifi-hal-samsung.so
 vendor/lib/libwpa_client.so
 vendor/lib/libwrappergps.so
 vendor/lib/mali_symlink.so
@@ -1074,7 +1074,7 @@ vendor/lib64/libvkmanager_vendor.so
 vendor/lib64/libvkservice.so
 vendor/lib64/libvpl.so
 vendor/lib64/libvra.so
-vendor/lib64/libwifi-hal.so
+vendor/lib64/libwifi-hal.so:vendor/lib64/libwifi-hal-samsung.so
 vendor/lib64/libwpa_client.so
 vendor/lib64/libwrappergps.so
 vendor/lib64/libwvaidl.so

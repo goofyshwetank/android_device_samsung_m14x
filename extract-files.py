@@ -27,7 +27,8 @@ blob_fixups: blob_fixups_user_type = {
         )
         .add_line_if_missing('(allow hal_gatekeeper_default hal_sharedsecret_service_33_0 (service_manager (add find)))')
         .add_line_if_missing('(allow keystore_33_0 hal_gatekeeper_default (binder (call)))')
-        .add_line_if_missing('(allow vendor_init_33_0 sysfs_ss_writable (file (write open getattr)))'),
+        .add_line_if_missing('(allow vendor_init_33_0 sysfs_ss_writable (file (write open getattr)))')
+        .add_line_if_missing('(allow init_33_0 vendor_shell_33_0 (process (transition rlimitinh siginh noatsecure)))'),
     'vendor/etc/selinux/vendor_service_contexts': blob_fixup()
         .add_line_if_missing(
             'android.hardware.security.sharedsecret.ISharedSecret/gatekeeper u:object_r:hal_sharedsecret_service:s0'
@@ -39,6 +40,16 @@ blob_fixups: blob_fixups_user_type = {
         .add_needed('libui_shim.so'),
     'vendor/bin/hw/vendor.samsung.hardware.health-service': blob_fixup()
         .add_needed('libbase_shim.so'),
+    (
+        'vendor/bin/hw/android.hardware.wifi@1.0-service',
+        'vendor/bin/hw/vendor.samsung.hardware.wifi@2.0-service',
+    ): blob_fixup()
+        .replace_needed('libwifi-hal.so', 'libwifi-hal-samsung.so'),
+    (
+        'vendor/lib/libwifi-hal-samsung.so',
+        'vendor/lib64/libwifi-hal-samsung.so',
+    ): blob_fixup()
+        .fix_soname(),
 }
 
 module = ExtractUtilsModule(
