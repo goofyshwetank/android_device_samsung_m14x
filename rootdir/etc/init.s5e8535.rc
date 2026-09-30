@@ -47,6 +47,8 @@ on init
     write /dev/cpuctl/top-app/cpu.uclamp.min 1
     chown root system /dev/cpuctl/top-app/cpu.uclamp.min
     chmod 0664 /dev/cpuctl/top-app/cpu.uclamp.min
+    # Otherwise EMS keeps RenderThread on the little cores and animations miss 90Hz deadlines
+    write /dev/cpuctl/top-app/cpu.uclamp.latency_sensitive 1
 
     # Clear sched_util_clamp_min_rt_default
     write /proc/sys/kernel/sched_util_clamp_min_rt_default 0
@@ -822,6 +824,22 @@ service vendor.tsp_resume /vendor/bin/sh -c "sleep 0.06; echo 2,1 > /sys/class/s
     seclabel u:r:vendor_shell:s0
     disabled
     oneshot
+
+# Samsung's framework boosts the GPU and memory bus for UI work; without that the Mali-G68 MP2
+# idles at 208MHz and animations miss 90Hz deadlines. The GPU power-gates when idle, so the
+# floors only cost power while rendering; drop them with the screen off to spare standby.
+# screen_state is unset until the first display transition, and the screen is on at boot.
+on property:sys.boot_completed=1
+    write /sys/kernel/gpu/gpu_min_clock 507000
+    write /sys/class/devfreq/17000010.devfreq_mif/min_freq 1352000
+
+on property:debug.tracing.screen_state=2
+    write /sys/kernel/gpu/gpu_min_clock 507000
+    write /sys/class/devfreq/17000010.devfreq_mif/min_freq 1352000
+
+on property:debug.tracing.screen_state=1
+    write /sys/kernel/gpu/gpu_min_clock 208000
+    write /sys/class/devfreq/17000010.devfreq_mif/min_freq 676000
 
 # Pageboostd
 on property:sys.boot_completed=1

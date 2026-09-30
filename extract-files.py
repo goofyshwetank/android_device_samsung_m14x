@@ -34,6 +34,12 @@ blob_fixups: blob_fixups_user_type = {
         .add_line_if_missing(
             'android.hardware.security.sharedsecret.ISharedSecret/gatekeeper u:object_r:hal_sharedsecret_service:s0'
         ),
+    # Stock routes A2DP through Samsung's own policy file; the AOSP stack needs the bluetooth module
+    'vendor/etc/audio_policy_configuration.xml': blob_fixup()
+        .regex_replace(
+            r'(?m)^    </modules>',
+            '        <xi:include href="bluetooth_audio_policy_configuration.xml" />\n    </modules>',
+        ),
     'vendor/lib/libexynosgraphicbuffer.so': blob_fixup()
         .add_needed('libui_shim.so'),
     # lockYCbCr64 calls GrallocMapper's vtable directly: slot 0x50 was lock(ycbcr) on

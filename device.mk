@@ -21,9 +21,10 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 PRODUCT_PACKAGES += \
     android.hardware.security.keymint-service
 
-# Software Gatekeeper (TEEGRIS only accepts the Samsung-signed gatekeeper client)
+# Stock gatekeeper service: TEEGRIS only accepts Samsung's own client binary, and the
+# fingerprint TA verifies enrollment auth tokens against the TEE gatekeeper
 PRODUCT_PACKAGES += \
-    com.android.hardware.gatekeeper.nonsecure
+    android.hardware.gatekeeper@1.0-impl
 
 # AOSP builds of generic HAL services whose stock prebuilts clash with AOSP module names
 # ponytail: memtrack uses the AOSP example (reports no GPU memory); memtrack-service.exynos
