@@ -806,8 +806,17 @@ on boot
 on property:debug.tracing.screen_state=1
     write /sys/class/sec/tsp/enabled "1,0"
 
+# The firmware download must start after the panel reset (~45ms after screen_state=2),
+# otherwise it is clobbered and retried (~1.9s instead of ~0.2s)
 on property:debug.tracing.screen_state=2
-    write /sys/class/sec/tsp/enabled "2,1"
+    start vendor.tsp_resume
+
+service vendor.tsp_resume /vendor/bin/sh -c "sleep 0.15; echo 2,1 > /sys/class/sec/tsp/enabled"
+    user system
+    group system
+    seclabel u:r:vendor_shell:s0
+    disabled
+    oneshot
 
 # Pageboostd
 on property:sys.boot_completed=1
