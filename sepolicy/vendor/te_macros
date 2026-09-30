@@ -1,3 +1,0 @@
-define(`teegris_use', `
-    allow $1 tee_device:chr_file rw_file_perms;
-')

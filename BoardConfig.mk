@@ -31,18 +31,17 @@ SELINUX_IGNORE_NEVERALLOWS := true
 TARGET_FLATTEN_APEX := true
 
 
-
 # Kernel
 BOARD_KERNEL_BASE := 0x10000000
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_IMAGE_NAME := Image
-BOARD_KERNEL_CMDLINE := androidboot.hardware=s5e8535 firmware_class.path=/vendor/firmware
+BOARD_KERNEL_CMDLINE := androidboot.selinux=permissive androidboot.hardware=s5e8535 firmware_class.path=/vendor/firmware
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
-TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilts/kernel
-BOARD_PREBUILT_DTBIMAGE_DIR := $(DEVICE_PATH)/prebuilts/dtb
-BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)/prebuilts/dtbo.img
-# TARGET_KERNEL_SOURCE := kernel/samsung/s5e8535
+TARGET_KERNEL_SOURCE := kernel/samsung/s5e8535
+TARGET_PREBUILT_KERNEL := device/samsung/m14x/prebuilts/kernel
+BOARD_PREBUILT_DTBIMAGE_DIR := device/samsung/m14x/prebuilts/dtb
+BOARD_PREBUILT_DTBOIMAGE := device/samsung/m14x/prebuilts/dtbo.img
 TARGET_KERNEL_CONFIG := s5e8535-m14xnsxx_defconfig
 TARGET_KERNEL_CLANG_COMPILE := true
 TARGET_KERNEL_LLVM_BINUTILS := true
@@ -119,13 +118,12 @@ BOARD_VENDOR := samsung
 TARGET_NO_BOOTLOADER := true
 
 # VINTF (optional files only if present)
-BUILD_BROKEN_VINTF_PRODUCT_COPY_FILES := true
 DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml
 ifneq ($(wildcard $(DEVICE_PATH)/compatibility_matrix.xml),)
 DEVICE_MATRIX_FILE := $(DEVICE_PATH)/compatibility_matrix.xml
 endif
 ifneq ($(wildcard $(DEVICE_PATH)/framework_compatibility_matrix.xml),)
-DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += $(DEVICE_PATH)/framework_compatibility_matrix.xml
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := $(DEVICE_PATH)/framework_compatibility_matrix.xml
 endif
 
 # Properties
@@ -137,8 +135,8 @@ TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
 endif
 
 # SELinux
-BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
+BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
 
 # Inherit from proprietary vendor when present
 -include vendor/samsung/m14x/BoardConfigVendor.mk
-BOARD_GENFS_LABELS_VERSION := 202504
+TARGET_FS_CONFIG_GEN := device/samsung/m14x/config.fs

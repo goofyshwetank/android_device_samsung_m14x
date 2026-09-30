@@ -17,8 +17,27 @@ AB_OTA_UPDATER := false
 
 # Dynamic partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
+# Software KeyMint (the Android 13 Samsung service is not compatible here)
+PRODUCT_PACKAGES += \
+    android.hardware.security.keymint-service
 
-# BootControl intentionally excluded — m14x is non-A/B (AB_OTA_UPDATER := false)
+# Software Gatekeeper (TEEGRIS only accepts the Samsung-signed gatekeeper client)
+PRODUCT_PACKAGES += \
+    com.android.hardware.gatekeeper.nonsecure
+
+# AOSP builds of generic HAL services whose stock prebuilts clash with AOSP module names
+# ponytail: memtrack uses the AOSP example (reports no GPU memory); memtrack-service.exynos
+# lives in the hardware/samsung_slsi-linaro/graphics namespace, which clashes with vendor prebuilts.
+PRODUCT_PACKAGES += \
+    android.hardware.audio.service \
+    android.hardware.audio@7.0-impl \
+    android.hardware.audio.effect@7.0-impl \
+    android.hardware.drm-service.clearkey \
+    android.hardware.graphics.composer@2.4-service \
+    android.hardware.memtrack-service.example \
+    android.hardware.sensors@2.0-service.multihal \
+    vndservicemanager \
+    wpa_supplicant
 
 # Fstab & Vendor Boot Ramdisk
 PRODUCT_COPY_FILES += \
@@ -52,54 +71,10 @@ PRODUCT_CHARACTERISTICS := nosdcard
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
-    $(LOCAL_PATH) \
-    device/samsung/s5e8535-common
+    $(LOCAL_PATH)
 
 # Overlay placeholders
 PRODUCT_ENFORCE_RRO_TARGETS := *
 
 # Inherit proprietary blobs when extracted
 $(call inherit-product-if-exists, vendor/samsung/m14x/m14x-vendor.mk)
-
-# Security: Software KeyMint and Gatekeeper
-PRODUCT_PACKAGES += \
-    android.hardware.security.keymint-service \
-    android.hardware.gatekeeper@1.0-service.software \
-    libprocessgroup
-
-# Vendor libs needed by Samsung proprietary HAL binaries (stub pulls vendor variants)
-PRODUCT_PACKAGES += libvendor_samsung_deps
-
-
-# Audio
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/audio/mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths.xml
-
-# Overlays
-DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
-
-# Shims
-PRODUCT_PACKAGES += \
-    libdsms_vendor \
-    libepicoperator \
-    libhypervintf \
-    libsensorndkbridge_shim
-
-# Sensors
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/sensors/hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf
-
-# RIL
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/ril/sehradiomanager.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sehradiomanager.conf
-
-# RAM Plus
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/etc/init.ramplus.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.ramplus.rc
-
-# Vendor filesystem config for Samsung-specific AIDs
-TARGET_FS_CONFIG_GEN := $(LOCAL_PATH)/config.fs
-
-
-# VNDK apex from stock — required for Android 16 linkerconfig VNDK namespace
-PRODUCT_COPY_FILES += $(LOCAL_PATH)/apex/com.android.vndk.v33.apex:$(TARGET_COPY_OUT_SYSTEM)/apex/com.android.vndk.v33.apex

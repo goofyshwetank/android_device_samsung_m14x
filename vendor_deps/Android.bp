@@ -15,6 +15,7 @@ cc_library_shared {
         "android.hidl.token@1.0-utils",
         "libfmq",
         "libsync",
+        "libdrm",
     ],
     srcs: ["empty.cpp"],
 }
