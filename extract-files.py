@@ -28,16 +28,22 @@ blob_fixups: blob_fixups_user_type = {
         .add_line_if_missing('(allow hal_gatekeeper_default hal_sharedsecret_service_33_0 (service_manager (add find)))')
         .add_line_if_missing('(allow keystore_33_0 hal_gatekeeper_default (binder (call)))')
         .add_line_if_missing('(allow vendor_init_33_0 sysfs_ss_writable (file (write open getattr)))')
-        .add_line_if_missing('(allow init_33_0 vendor_shell_33_0 (process (transition rlimitinh siginh noatsecure)))'),
+        .add_line_if_missing('(allow init_33_0 vendor_shell_33_0 (process (transition rlimitinh siginh noatsecure)))')
+        .add_line_if_missing('(allow hal_camera_default fwk_sensor_service (service_manager (find)))'),
     'vendor/etc/selinux/vendor_service_contexts': blob_fixup()
         .add_line_if_missing(
             'android.hardware.security.sharedsecret.ISharedSecret/gatekeeper u:object_r:hal_sharedsecret_service:s0'
         ),
-    (
-        'vendor/lib/libexynosgraphicbuffer.so',
-        'vendor/lib64/libexynosgraphicbuffer.so',
-    ): blob_fixup()
+    'vendor/lib/libexynosgraphicbuffer.so': blob_fixup()
         .add_needed('libui_shim.so'),
+    # lockYCbCr64 calls GrallocMapper's vtable directly: slot 0x50 was lock(ycbcr) on
+    # Android 13 but is unlock() on Android 16, where lock(ycbcr) moved to 0x48
+    'vendor/lib64/libexynosgraphicbuffer.so': blob_fixup()
+        .add_needed('libui_shim.so')
+        .binary_regex_replace(b'\x08\x00\x40\xf9\x08\x29\x40\xf9', b'\x08\x00\x40\xf9\x08\x25\x40\xf9'),
+    'vendor/lib64/libSecC2ComponentStore.so': blob_fixup()
+        .binary_regex_replace(b'_ZN17C2PooledBlockPool', b'_ZN17C2PooledBlockPoox')
+        .add_needed('libsecc2_shim.so'),
     'vendor/bin/hw/vendor.samsung.hardware.health-service': blob_fixup()
         .add_needed('libbase_shim.so'),
     (

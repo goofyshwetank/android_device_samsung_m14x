@@ -1164,6 +1164,7 @@ vendor/recovery-from-boot.p
 vendor/saiv/image_understanding/db/aig_classifier/aig_classifier_cnn.tf
 vendor/saiv/image_understanding/db/aig_detector/aig_detector_cnn.tflite
 vendor/saiv/image_understanding/db/srr_interaction/srr_interaction_cnn.tflite
+# TEEgris only loads TAs signed for the flashed bootloader: take vendor/tee from E146BXXUDDZG7
 vendor/tee/00000000-0000-0000-0000-000000534b4d
 vendor/tee/00000000-0000-0000-0000-000048444350
 vendor/tee/00000000-0000-0000-0000-0000534b504d

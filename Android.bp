@@ -12,3 +12,20 @@ cc_library_shared {
     include_dirs: ["frameworks/hardware/interfaces/sensorservice/libsensorndkbridge"],
     vendor: true,
 }
+
+cc_library_shared {
+    name: "libsecc2_shim",
+    srcs: ["shims/libsecc2/C2PooledBlockPool.cpp"],
+    shared_libs: [
+        "android.hardware.media.bufferpool@2.0",
+        "libcodec2_vndk",
+        "libhidlbase",
+        "libutils",
+    ],
+    header_libs: [
+        "libcodec2_headers",
+        "libhardware_headers",
+    ],
+    compile_multilib: "64",
+    vendor: true,
+}

@@ -801,17 +801,22 @@ service insmod_sh_common /vendor/bin/init.insmod.sh /vendor/etc/init.insmod.${ro
 on boot
     write /proc/sys/vm/swappiness 160
 
+# Samsung security daemons refuse to work with an unlocked bootloader and retry forever
+on property:sys.boot_completed=1
+    stop vaultkeeper
+    stop proca
+
 # Touch (TDDI) loses state with the panel; the stock framework drives sec_input "enabled"
 # as "<display state>,<event>" (OFF=1 ON=2, EARLY=0 LATE=1)
 on property:debug.tracing.screen_state=1
     write /sys/class/sec/tsp/enabled "1,0"
 
-# The firmware download must start after the panel reset (~45ms after screen_state=2),
-# otherwise it is clobbered and retried (~1.9s instead of ~0.2s)
+# The firmware download must start after the panel reset (60-75ms after screen_state=2),
+# otherwise it is clobbered and retried (~1.9s instead of ~0.2s). Starting sh takes ~60ms.
 on property:debug.tracing.screen_state=2
     start vendor.tsp_resume
 
-service vendor.tsp_resume /vendor/bin/sh -c "sleep 0.15; echo 2,1 > /sys/class/sec/tsp/enabled"
+service vendor.tsp_resume /vendor/bin/sh -c "sleep 0.06; echo 2,1 > /sys/class/sec/tsp/enabled"
     user system
     group system
     seclabel u:r:vendor_shell:s0

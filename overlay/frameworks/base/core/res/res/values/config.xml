@@ -357,4 +357,11 @@
 
     <!-- True if the device supports Sustained Performance Mode -->
     <bool name="config_sustainedPerformanceModeSupported">true</bool>
+
+    <!-- The kernel exposes no current_max/voltage_max, so the charging speed can't be derived.
+         hv_charger_status: 0 normal, 1 fast (AFC), 2 super fast (PD PPS) -->
+    <bool name="config_hasTurboPowerCharger">true</bool>
+    <!-- ponytail: only one expected value is supported, so 9V AFC (1) shows as regular charging -->
+    <string name="config_oemFastChargerStatusPath" translatable="false">/sys/class/power_supply/battery/hv_charger_status</string>
+    <string name="config_oemFastChargerStatusValue" translatable="false">2</string>
 </resources>

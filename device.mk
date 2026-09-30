@@ -32,13 +32,18 @@ PRODUCT_PACKAGES += \
     android.hardware.audio.service \
     android.hardware.audio@7.0-impl \
     android.hardware.audio.effect@7.0-impl \
+    android.hardware.bluetooth.audio-impl \
     android.hardware.drm-service.clearkey \
     android.hardware.graphics.composer@2.4-service \
     android.hardware.memtrack-service.example \
     android.hardware.sensors@2.0-service.multihal \
+    libsecc2_shim \
     libsensorndkbridge_shim \
     vndservicemanager \
     wpa_supplicant
+
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.fingerprint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.fingerprint.xml
 
 # Fstab & Vendor Boot Ramdisk
 PRODUCT_COPY_FILES += \
@@ -80,3 +85,9 @@ PRODUCT_ENFORCE_RRO_TARGETS := *
 
 # Inherit proprietary blobs when extracted
 $(call inherit-product-if-exists, vendor/samsung/m14x/m14x-vendor.mk)
+
+# MindTheGapps (optional): git clone -b baklava https://gitlab.com/MindTheGapps/vendor_gapps vendor/gapps
+# crDroid's LatinIME already defines libjni_latinimegoogle, so drop MindTheGapps' copy:
+#   perl -0pi -e 's/cc_prebuilt_library_shared \{\n    name: "libjni_latinimegoogle".*?\n\}\n\n?//s' vendor/gapps/arm64/Android.bp
+#   sed -i -e 's/Phonesky \\/Phonesky/' -e '/libjni_latinimegoogle/d' vendor/gapps/arm64/arm64-vendor.mk
+$(call inherit-product-if-exists, vendor/gapps/arm64/arm64-vendor.mk)
