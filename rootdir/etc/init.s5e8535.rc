@@ -808,6 +808,11 @@ on property:sys.boot_completed=1
     stop vaultkeeper
     stop proca
 
+# libsec-ril holds back incoming SMS until the framework reports ready; the libsec-ril shim
+# sends FW_READY once this is set
+on property:sys.boot_completed=1
+    setprop ro.vendor.radio.fw_ready 1
+
 # Touch (TDDI) loses state with the panel; the stock framework drives sec_input "enabled"
 # as "<display state>,<event>" (OFF=1 ON=2, EARLY=0 LATE=1)
 on property:debug.tracing.screen_state=1

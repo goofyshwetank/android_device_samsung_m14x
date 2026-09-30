@@ -1011,7 +1011,7 @@ vendor/lib64/libsavscmn.so
 vendor/lib64/libsavsvc.so
 vendor/lib64/libscaler_hw.unifunc.so
 vendor/lib64/libscaler_sw.unifunc.so
-vendor/lib64/libsec-ril.so
+vendor/lib64/libsec-ril.so:vendor/lib64/libsec-ril-impl.so;FIX_SONAME
 vendor/lib64/libsec2lsi_conversion.so
 vendor/lib64/libsec_skpmHalTlc.so
 vendor/lib64/libsecaudiocoreutils.so

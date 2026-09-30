@@ -40,6 +40,7 @@ PRODUCT_PACKAGES += \
     android.hardware.sensors@2.0-service.multihal \
     hostapd \
     WifiOverlayM14x \
+    libsec-ril \
     libsecc2_shim \
     libsensorndkbridge_shim \
     vndservicemanager \

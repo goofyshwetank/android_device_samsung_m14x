@@ -14,6 +14,30 @@ cc_library_shared {
 }
 
 cc_library_shared {
+    name: "libsec-ril",
+    srcs: [
+        "shims/libsec-ril/SmscAddress.cpp",
+        "shims/libsec-ril/libsec_ril_smsc_shim.cpp",
+    ],
+    shared_libs: [
+        "libbinder_ndk",
+        "libcutils",
+        "libdl",
+        "liblog",
+    ],
+    include_dirs: ["hardware/ril/include"],
+    cflags: [
+        "-Wall",
+        "-Werror",
+        "-DANDROID_MULTI_SIM",
+        "-DANDROID_SIM_COUNT_2",
+        "-DRIL_SHLIB",
+    ],
+    compile_multilib: "64",
+    vendor: true,
+}
+
+cc_library_shared {
     name: "libsecc2_shim",
     srcs: ["shims/libsecc2/C2PooledBlockPool.cpp"],
     shared_libs: [
