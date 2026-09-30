@@ -96,8 +96,12 @@ blob_fixups: blob_fixups_user_type = {
     ): blob_fixup()
         .replace_needed('lib_profiler.so', 'lib_profiler-samsung.so'),
     'vendor/lib64/unihal_android.so': blob_fixup()
-        .add_needed('libui_shim.so'),
-    'vendor/lib64/libsensorlistener.so': blob_fixup()
+        .add_needed('libui_shim.so')
+        .add_needed('libsensorndkbridge_shim.so'),
+    (
+        'vendor/lib64/libhypermotion_core.so',
+        'vendor/lib64/libsensorlistener.so',
+    ): blob_fixup()
         .add_needed('libsensorndkbridge_shim.so'),
 }
 

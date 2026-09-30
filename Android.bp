@@ -4,6 +4,11 @@ soong_namespace {
 cc_library_shared {
     name: "libsensorndkbridge_shim",
     srcs: ["shims/libsensorndkbridge/ALooper.cpp"],
-    shared_libs: ["libsensorndkbridge"],
+    shared_libs: [
+        "libsensorndkbridge",
+        "libutils",
+    ],
+    header_libs: ["libbase_headers"],
+    include_dirs: ["frameworks/hardware/interfaces/sensorservice/libsensorndkbridge"],
     vendor: true,
 }
