@@ -46,8 +46,17 @@ PRODUCT_PACKAGES += \
     vndservicemanager \
     wpa_supplicant
 
+# IMS (VoLTE): Samsung's IMS stack is One UI-only, so use the open-source PhhIms
+# (packages/apps/PhhIms, github.com/krazey/ims)
+PRODUCT_PACKAGES += \
+    Iwlan \
+    PhhIms \
+    QualifiedNetworksService
+
 PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.fingerprint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.fingerprint.xml
+    frameworks/native/data/etc/android.hardware.fingerprint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.fingerprint.xml \
+    frameworks/native/data/etc/android.hardware.telephony.ims.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.telephony.ims.xml \
+    $(LOCAL_PATH)/configs/permissions/privapp-permissions-me.phh.ims.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-me.phh.ims.xml
 
 # Fstab & Vendor Boot Ramdisk
 PRODUCT_COPY_FILES += \

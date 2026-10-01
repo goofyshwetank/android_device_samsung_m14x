@@ -1,3 +1,7 @@
 # System properties — starter (refine from dumps)
 ro.sf.lcd_density=450
 ro.product.first_api_level=33
+
+# IMS (PhhIms): expose the VoLTE toggle without per-carrier CarrierConfig
+persist.dbg.volte_avail_ovr=1
+persist.dbg.allow_ims_off=1

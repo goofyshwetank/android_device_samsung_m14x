@@ -79,6 +79,10 @@ git clone https://github.com/goofyshwetank/android_vendor_samsung_m14x     vendo
 
 git clone https://github.com/goofyshwetank/android_kernel_samsung_s5e8535     kernel/samsung/s5e8535
 
+# Open-source IMS (VoLTE)
+git clone --recurse-submodules https://github.com/krazey/ims     packages/apps/PhhIms
+git -C packages/apps/PhhIms checkout a3fec01 && git -C packages/apps/PhhIms submodule update --init --recursive
+
 # Build
 source build/envsetup.sh
 breakfast m14x
