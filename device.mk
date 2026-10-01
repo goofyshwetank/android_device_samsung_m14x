@@ -17,10 +17,6 @@ AB_OTA_UPDATER := false
 
 # Dynamic partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
-# Software KeyMint (the Android 13 Samsung service is not compatible here)
-PRODUCT_PACKAGES += \
-    android.hardware.security.keymint-service
-
 # Stock gatekeeper service: TEEGRIS only accepts Samsung's own client binary, and the
 # fingerprint TA verifies enrollment auth tokens against the TEE gatekeeper
 PRODUCT_PACKAGES += \

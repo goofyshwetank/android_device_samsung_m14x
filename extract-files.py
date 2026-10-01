@@ -54,7 +54,12 @@ blob_fixups: blob_fixups_user_type = {
         .add_line_if_missing('(allow rild sehradio (binder (call transfer)))')
         .add_line_if_missing('(allow rild sehradio (fd (use)))'),
     'vendor/etc/selinux/vendor_file_contexts': blob_fixup()
-        .add_line_if_missing('/(vendor|system/vendor)/bin/sehradio u:object_r:sehradio_exec:s0'),
+        .add_line_if_missing('/(vendor|system/vendor)/bin/sehradio u:object_r:sehradio_exec:s0')
+        .add_line_if_missing(
+            '/(vendor|system/vendor)/bin/hw/android\\.hardware\\.security\\.keymint-service\\.samsung u:object_r:hal_keymint_default_exec:s0'
+        ),
+    'vendor/etc/init/android.hardware.security.keymint-service.samsung.rc': blob_fixup()
+        .regex_replace('(?m)keymint-service$', 'keymint-service.samsung'),
     'vendor/etc/selinux/vendor_service_contexts': blob_fixup()
         .add_line_if_missing(
             'android.hardware.security.sharedsecret.ISharedSecret/gatekeeper u:object_r:hal_sharedsecret_service:s0'
