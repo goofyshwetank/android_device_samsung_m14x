@@ -82,6 +82,7 @@ git clone https://github.com/goofyshwetank/android_kernel_samsung_s5e8535     ke
 # Open-source IMS (VoLTE)
 git clone --recurse-submodules https://github.com/krazey/ims     packages/apps/PhhIms
 git -C packages/apps/PhhIms checkout a3fec01 && git -C packages/apps/PhhIms submodule update --init --recursive
+git -C packages/apps/PhhIms apply ../../../device/samsung/m14x/patches/PhhIms/*.patch
 
 # Build
 source build/envsetup.sh
