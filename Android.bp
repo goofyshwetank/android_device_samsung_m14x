@@ -37,6 +37,21 @@ cc_library_shared {
     vendor: true,
 }
 
+cc_binary {
+    name: "sehradio",
+    srcs: ["sehradio/sehradio.cpp"],
+    init_rc: ["sehradio/sehradio.rc"],
+    shared_libs: [
+        "libbinder_ndk",
+        "liblog",
+    ],
+    cflags: [
+        "-Wall",
+        "-Werror",
+    ],
+    vendor: true,
+}
+
 cc_library_shared {
     name: "libsecc2_shim",
     srcs: ["shims/libsecc2/C2PooledBlockPool.cpp"],

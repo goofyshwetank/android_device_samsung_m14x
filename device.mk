@@ -43,6 +43,7 @@ PRODUCT_PACKAGES += \
     libsec-ril \
     libsecc2_shim \
     libsensorndkbridge_shim \
+    sehradio \
     vndservicemanager \
     wpa_supplicant
 

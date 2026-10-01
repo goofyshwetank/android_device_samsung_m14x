@@ -1,0 +1,5 @@
+type sehradio, domain;
+type sehradio_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(sehradio)
+binder_use(sehradio)
+hal_client_domain(sehradio, hal_telephony)

@@ -29,7 +29,32 @@ blob_fixups: blob_fixups_user_type = {
         .add_line_if_missing('(allow keystore_33_0 hal_gatekeeper_default (binder (call)))')
         .add_line_if_missing('(allow vendor_init_33_0 sysfs_ss_writable (file (write open getattr)))')
         .add_line_if_missing('(allow init_33_0 vendor_shell_33_0 (process (transition rlimitinh siginh noatsecure)))')
-        .add_line_if_missing('(allow hal_camera_default fwk_sensor_service (service_manager (find)))'),
+        .add_line_if_missing('(allow hal_camera_default fwk_sensor_service (service_manager (find)))')
+        .add_line_if_missing('(type sehradio)')
+        .add_line_if_missing('(roletype object_r sehradio)')
+        .add_line_if_missing('(typeattributeset domain (sehradio))')
+        .add_line_if_missing('(type sehradio_exec)')
+        .add_line_if_missing('(roletype object_r sehradio_exec)')
+        .add_line_if_missing('(typeattributeset file_type (sehradio_exec))')
+        .add_line_if_missing('(typeattributeset exec_type (sehradio_exec))')
+        .add_line_if_missing('(typeattributeset vendor_file_type (sehradio_exec))')
+        .add_line_if_missing('(typetransition init_33_0 sehradio_exec process sehradio)')
+        .add_line_if_missing('(allow init_33_0 sehradio_exec (file (read getattr map execute open)))')
+        .add_line_if_missing('(allow init_33_0 sehradio (process (transition siginh rlimitinh noatsecure)))')
+        .add_line_if_missing('(allow sehradio sehradio_exec (file (read getattr map execute open entrypoint)))')
+        .add_line_if_missing('(allow sehradio binder_device_33_0 (chr_file (ioctl read write getattr map open)))')
+        .add_line_if_missing('(allow sehradio servicemanager_33_0 (binder (call transfer)))')
+        .add_line_if_missing('(allow servicemanager_33_0 sehradio (binder (call transfer)))')
+        .add_line_if_missing('(allow servicemanager_33_0 sehradio (dir (search)))')
+        .add_line_if_missing('(allow servicemanager_33_0 sehradio (file (read open)))')
+        .add_line_if_missing('(allow servicemanager_33_0 sehradio (process (getattr)))')
+        .add_line_if_missing('(allow sehradio hal_radio_service_33_0 (service_manager (find)))')
+        .add_line_if_missing('(allow sehradio rild (binder (call transfer)))')
+        .add_line_if_missing('(allow sehradio rild (fd (use)))')
+        .add_line_if_missing('(allow rild sehradio (binder (call transfer)))')
+        .add_line_if_missing('(allow rild sehradio (fd (use)))'),
+    'vendor/etc/selinux/vendor_file_contexts': blob_fixup()
+        .add_line_if_missing('/(vendor|system/vendor)/bin/sehradio u:object_r:sehradio_exec:s0'),
     'vendor/etc/selinux/vendor_service_contexts': blob_fixup()
         .add_line_if_missing(
             'android.hardware.security.sharedsecret.ISharedSecret/gatekeeper u:object_r:hal_sharedsecret_service:s0'

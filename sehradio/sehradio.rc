@@ -1,0 +1,4 @@
+service vendor.sehradio /vendor/bin/sehradio
+    class main
+    user radio
+    group radio
