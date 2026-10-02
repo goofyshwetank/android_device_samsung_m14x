@@ -1,8 +1,0 @@
-# Permissive domains for initial bringup and debug
-permissive init;
-permissive vendor_init;
-permissive kernel;
-permissive vold;
-permissive zygote;
-permissive surfaceflinger;
-permissive secril_config_svc;

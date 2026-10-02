@@ -134,6 +134,7 @@ endif
 
 # SELinux
 BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
+SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/private
 
 # Wi-Fi: AOSP hostapd is only built when a driver is set
 BOARD_HOSTAPD_DRIVER := NL80211

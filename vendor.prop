@@ -2,7 +2,6 @@
 ro.board.platform=erd8535
 ro.soc.manufacturer=Samsung
 ro.soc.model=s5e8535
-ro.hardware=s5e8535
 ro.product.board=s5e8535
 ro.zygote=zygote64_32
 
@@ -47,7 +46,6 @@ ro.surface_flinger.use_content_detection_for_refresh_rate=true
 ro.surface_flinger.vsync_event_phase_offset_ns=0
 ro.surface_flinger.vsync_sf_event_phase_offset_ns=0
 # Blur runs on a Mali-G68 MP2; let SF boost for it
-ro.sf.blurs_are_expensive=1
 
 # Dalvik heap (phone-xhdpi-4096-dalvik-heap values; the device has ~3.5 GB RAM)
 dalvik.vm.heapstartsize=8m
