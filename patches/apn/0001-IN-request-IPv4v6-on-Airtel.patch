@@ -1,0 +1,236 @@
+From 531da8282dcfee1c7e6490b30d40c8468763bcac Mon Sep 17 00:00:00 2001
+From: goofyshwetank <goofyshwetank@users.noreply.github.com>
+Date: Fri, 2 Oct 2026 02:49:24 +0000
+Subject: [PATCH] IN: request IPv4v6 on Airtel
+
+Airtel only hands out DNS servers over IPv6. On the default IPv4-only
+PDN the modem returns 0.0.0.0 DNS, so mobile data never validates.
+
+Change-Id: I139084b12a69cc781963076408353ccf4a0921f1
+---
+ IN.xml | 48 ++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 48 insertions(+)
+
+diff --git a/IN.xml b/IN.xml
+index ae8b051..c7fc2d3 100644
+--- a/IN.xml
++++ b/IN.xml
+@@ -69,6 +69,8 @@
+         mnc="02"
+         carrier="Airtel GPRS"
+         apn="airtelgprs.com"
++        protocol="IPV4V6"
++        roaming_protocol="IPV4V6"
+         type="default,supl"
+     />
+     <apn
+@@ -96,6 +98,8 @@
+         mnc="03"
+         carrier="Airtel GPRS"
+         apn="airtelgprs.com"
++        protocol="IPV4V6"
++        roaming_protocol="IPV4V6"
+         type="default,supl"
+     />
+     <apn
+@@ -185,6 +189,8 @@
+         mnc="06"
+         carrier="Airtel GPRS"
+         apn="airtelgprs.com"
++        protocol="IPV4V6"
++        roaming_protocol="IPV4V6"
+         type="default,supl"
+     />
+     <apn
+@@ -298,6 +304,8 @@
+         mnc="10"
+         carrier="Airtel GPRS"
+         apn="airtelgprs.com"
++        protocol="IPV4V6"
++        roaming_protocol="IPV4V6"
+         type="default,supl"
+     />
+     <apn
+@@ -496,6 +504,8 @@
+         mnc="16"
+         carrier="Airtel GPRS"
+         apn="airtelgprs.com"
++        protocol="IPV4V6"
++        roaming_protocol="IPV4V6"
+         type="default,supl"
+     />
+     <apn
+@@ -926,6 +936,8 @@
+         mnc="31"
+         carrier="Airtel GPRS"
+         apn="airtelgprs.com"
++        protocol="IPV4V6"
++        roaming_protocol="IPV4V6"
+         type="default,supl"
+     />
+     <apn
+@@ -1193,6 +1205,8 @@
+         mnc="40"
+         carrier="Airtel GPRS"
+         apn="airtelgprs.com"
++        protocol="IPV4V6"
++        roaming_protocol="IPV4V6"
+         type="default,supl"
+     />
+     <apn
+@@ -1359,6 +1373,8 @@
+         mnc="45"
+         carrier="Airtel GPRS"
+         apn="airtelgprs.com"
++        protocol="IPV4V6"
++        roaming_protocol="IPV4V6"
+         type="default,supl"
+     />
+     <apn
+@@ -1418,6 +1434,8 @@
+         mnc="49"
+         carrier="Airtel GPRS"
+         apn="airtelgprs.com"
++        protocol="IPV4V6"
++        roaming_protocol="IPV4V6"
+         type="default,supl"
+     />
+     <apn
+@@ -1954,6 +1972,8 @@
+         mnc="61"
+         carrier="Airtel GPRS"
+         apn="airtelgprs.com"
++        protocol="IPV4V6"
++        roaming_protocol="IPV4V6"
+         type="default,supl"
+     />
+     <apn
+@@ -2326,6 +2346,8 @@
+         mnc="70"
+         carrier="Airtel GPRS"
+         apn="airtelgprs.com"
++        protocol="IPV4V6"
++        roaming_protocol="IPV4V6"
+         type="default,supl"
+     />
+     <apn
+@@ -3149,6 +3171,8 @@
+         mnc="90"
+         carrier="Airtel GPRS"
+         apn="airtelgprs.com"
++        protocol="IPV4V6"
++        roaming_protocol="IPV4V6"
+         type="default,supl"
+     />
+     <apn
+@@ -3227,6 +3251,8 @@
+         mnc="92"
+         carrier="Airtel GPRS"
+         apn="airtelgprs.com"
++        protocol="IPV4V6"
++        roaming_protocol="IPV4V6"
+         type="default,supl"
+     />
+     <apn
+@@ -3253,6 +3279,8 @@
+         mnc="93"
+         carrier="Airtel GPRS"
+         apn="airtelgprs.com"
++        protocol="IPV4V6"
++        roaming_protocol="IPV4V6"
+         type="default,supl"
+     />
+     <apn
+@@ -3279,6 +3307,8 @@
+         mnc="94"
+         carrier="Airtel GPRS"
+         apn="airtelgprs.com"
++        protocol="IPV4V6"
++        roaming_protocol="IPV4V6"
+         type="default,supl"
+     />
+     <apn
+@@ -3305,6 +3335,8 @@
+         mnc="95"
+         carrier="Airtel GPRS"
+         apn="airtelgprs.com"
++        protocol="IPV4V6"
++        roaming_protocol="IPV4V6"
+         type="default,supl"
+     />
+     <apn
+@@ -3331,6 +3363,8 @@
+         mnc="96"
+         carrier="Airtel GPRS"
+         apn="airtelgprs.com"
++        protocol="IPV4V6"
++        roaming_protocol="IPV4V6"
+         type="default,supl"
+     />
+     <apn
+@@ -3376,6 +3410,8 @@
+         mnc="98"
+         carrier="Airtel GPRS"
+         apn="airtelgprs.com"
++        protocol="IPV4V6"
++        roaming_protocol="IPV4V6"
+         type="default,supl"
+     />
+     <apn
+@@ -5363,6 +5399,8 @@
+         mnc="51"
+         carrier="Airtel GPRS"
+         apn="airtelgprs.com"
++        protocol="IPV4V6"
++        roaming_protocol="IPV4V6"
+         type="default,supl"
+     />
+     <apn
+@@ -5400,6 +5438,8 @@
+         mnc="52"
+         carrier="Airtel GPRS"
+         apn="airtelgprs.com"
++        protocol="IPV4V6"
++        roaming_protocol="IPV4V6"
+         type="default,supl"
+     />
+     <apn
+@@ -5437,6 +5477,8 @@
+         mnc="53"
+         carrier="Airtel GPRS"
+         apn="airtelgprs.com"
++        protocol="IPV4V6"
++        roaming_protocol="IPV4V6"
+         type="default,supl"
+     />
+     <apn
+@@ -5474,6 +5516,8 @@
+         mnc="54"
+         carrier="Airtel GPRS"
+         apn="airtelgprs.com"
++        protocol="IPV4V6"
++        roaming_protocol="IPV4V6"
+         type="default,supl"
+     />
+     <apn
+@@ -5511,6 +5555,8 @@
+         mnc="55"
+         carrier="Airtel GPRS"
+         apn="airtelgprs.com"
++        protocol="IPV4V6"
++        roaming_protocol="IPV4V6"
+         type="default,supl"
+     />
+     <apn
+@@ -5548,6 +5594,8 @@
+         mnc="56"
+         carrier="Airtel GPRS"
+         apn="airtelgprs.com"
++        protocol="IPV4V6"
++        roaming_protocol="IPV4V6"
+         type="default,supl"
+     />
+     <apn
+-- 
+2.43.0
+

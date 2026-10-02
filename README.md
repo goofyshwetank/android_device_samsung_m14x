@@ -84,6 +84,9 @@ git clone --recurse-submodules https://github.com/krazey/ims     packages/apps/P
 git -C packages/apps/PhhIms checkout a3fec01 && git -C packages/apps/PhhIms submodule update --init --recursive
 git -C packages/apps/PhhIms apply ../../../device/samsung/m14x/patches/PhhIms/*.patch
 
+# Airtel only hands out DNS over IPv6
+git -C vendor/apn apply ../../device/samsung/m14x/patches/apn/*.patch
+
 # Build
 source build/envsetup.sh
 breakfast m14x
