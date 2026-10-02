@@ -22,6 +22,12 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 PRODUCT_PACKAGES += \
     android.hardware.gatekeeper@1.0-impl
 
+# Stock KeyMint was built against Android 13: IRemotelyProvisionedComponent V2 lived in
+# keymint-V2-ndk (AOSP now ships it in rkp-V2-ndk), and its ASN.1 templates need that BoringSSL
+PRODUCT_PACKAGES += \
+    android.hardware.security.rkp-V2-ndk.vendor \
+    libcrypto-v33
+
 # AOSP builds of generic HAL services whose stock prebuilts clash with AOSP module names
 # ponytail: memtrack uses the AOSP example (reports no GPU memory); memtrack-service.exynos
 # lives in the hardware/samsung_slsi-linaro/graphics namespace, which clashes with vendor prebuilts.

@@ -922,7 +922,7 @@ vendor/lib64/libcodec2_soft_common.so
 vendor/lib64/libcodec2_soft_eac3dec.so
 vendor/lib64/libcodec2_vndk.so
 vendor/lib64/libcppbor_external.so
-vendor/lib64/libcppcose_rkp.so
+vendor/lib64/libcppcose_rkp.so:vendor/lib64/libcppcose_rkp-samsung.so;MAKE_COPY_RULE_ONLY
 vendor/lib64/libcsc.so
 vendor/lib64/libdatamod.so
 vendor/lib64/libdeccfg.so
@@ -976,8 +976,8 @@ vendor/lib64/libimgproc_sw.unifunc@common.so
 vendor/lib64/libion_exynos.so
 vendor/lib64/libkeymaster4_1support.so
 vendor/lib64/libkeymaster4support.so
-vendor/lib64/libkeymaster_messages.so
-vendor/lib64/libkeymaster_portable.so
+vendor/lib64/libkeymaster_messages.so:vendor/lib64/libkeymaster_messages-samsung.so;MAKE_COPY_RULE_ONLY
+vendor/lib64/libkeymaster_portable.so:vendor/lib64/libkeymaster_portable-samsung.so;MAKE_COPY_RULE_ONLY
 vendor/lib64/libkeystore-engine-wifi-hidl.so
 vendor/lib64/libkeystore-wifi-hidl.so
 vendor/lib64/liblastaboxmsg.so
@@ -997,7 +997,7 @@ vendor/lib64/libpadm.so
 vendor/lib64/libprofileparamstorage.so
 vendor/lib64/libprotobuf-cpp-full-3.9.1.so
 vendor/lib64/libprotobuf-cpp-lite-3.9.1.so
-vendor/lib64/libpuresoftkeymasterdevice.so
+vendor/lib64/libpuresoftkeymasterdevice.so:vendor/lib64/libpuresoftkeymasterdevice-samsung.so;MAKE_COPY_RULE_ONLY
 vendor/lib64/libqfp_sensortest.so
 vendor/lib64/librecordalive.so
 vendor/lib64/libremosaic_wrapper.so
@@ -1046,7 +1046,7 @@ vendor/lib64/libsnaplite_native.so
 vendor/lib64/libsnaplite_native_secure.so
 vendor/lib64/libsnaplite_wrapper.so
 vendor/lib64/libsnaplite_wrapper_secure.so
-vendor/lib64/libsoft_attestation_cert.so
+vendor/lib64/libsoft_attestation_cert.so:vendor/lib64/libsoft_attestation_cert-samsung.so;MAKE_COPY_RULE_ONLY
 vendor/lib64/libsomxcmn.so
 vendor/lib64/libspatializerparamstorage.so
 vendor/lib64/libspeakercalibration.so

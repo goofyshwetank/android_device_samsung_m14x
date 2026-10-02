@@ -60,6 +60,35 @@ blob_fixups: blob_fixups_user_type = {
         ),
     'vendor/etc/init/android.hardware.security.keymint-service.samsung.rc': blob_fixup()
         .regex_replace('(?m)keymint-service$', 'keymint-service.samsung'),
+    'vendor/bin/hw/android.hardware.security.keymint-service.samsung': blob_fixup()
+        .replace_needed('libcrypto.so', 'libcrypto-v33.so')
+        .replace_needed('libkeymaster_portable.so', 'libkeymaster_portable-samsung.so')
+        .replace_needed('libpuresoftkeymasterdevice.so', 'libpuresoftkeymasterdevice-samsung.so')
+        .add_needed('android.hardware.security.rkp-V2-ndk.so'),
+    (
+        'vendor/lib64/libskeymint10device.so',
+        'vendor/lib64/libskeymint_cli.so',
+    ): blob_fixup()
+        .replace_needed('libcrypto.so', 'libcrypto-v33.so'),
+    'vendor/lib64/libkeymaster_messages-samsung.so': blob_fixup()
+        .fix_soname(),
+    'vendor/lib64/libcppcose_rkp-samsung.so': blob_fixup()
+        .fix_soname()
+        .replace_needed('libcrypto.so', 'libcrypto-v33.so'),
+    'vendor/lib64/libkeymaster_portable-samsung.so': blob_fixup()
+        .fix_soname()
+        .replace_needed('libcrypto.so', 'libcrypto-v33.so')
+        .replace_needed('libcppcose_rkp.so', 'libcppcose_rkp-samsung.so'),
+    'vendor/lib64/libsoft_attestation_cert-samsung.so': blob_fixup()
+        .fix_soname()
+        .replace_needed('libkeymaster_portable.so', 'libkeymaster_portable-samsung.so'),
+    'vendor/lib64/libpuresoftkeymasterdevice-samsung.so': blob_fixup()
+        .fix_soname()
+        .replace_needed('libcrypto.so', 'libcrypto-v33.so')
+        .replace_needed('libkeymaster_messages.so', 'libkeymaster_messages-samsung.so')
+        .replace_needed('libkeymaster_portable.so', 'libkeymaster_portable-samsung.so')
+        .replace_needed('libsoft_attestation_cert.so', 'libsoft_attestation_cert-samsung.so')
+        .replace_needed('libcppcose_rkp.so', 'libcppcose_rkp-samsung.so'),
     'vendor/etc/selinux/vendor_service_contexts': blob_fixup()
         .add_line_if_missing(
             'android.hardware.security.sharedsecret.ISharedSecret/gatekeeper u:object_r:hal_sharedsecret_service:s0'
