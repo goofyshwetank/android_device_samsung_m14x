@@ -54,6 +54,7 @@ blob_fixups: blob_fixups_user_type = {
         .add_line_if_missing('(allow rild sehradio (binder (call transfer)))')
         .add_line_if_missing('(allow rild sehradio (fd (use)))'),
     'vendor/etc/selinux/vendor_file_contexts': blob_fixup()
+        .regex_replace(r'(?m)^/sys/kernel/debug/.*\n', '')
         .add_line_if_missing('/(vendor|system/vendor)/bin/sehradio u:object_r:sehradio_exec:s0')
         .add_line_if_missing(
             '/(vendor|system/vendor)/bin/hw/android\\.hardware\\.security\\.keymint-service\\.samsung u:object_r:hal_keymint_default_exec:s0'
