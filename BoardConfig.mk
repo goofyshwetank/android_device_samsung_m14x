@@ -35,18 +35,17 @@ TARGET_FLATTEN_APEX := true
 BOARD_KERNEL_BASE := 0x10000000
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_IMAGE_NAME := Image
-BOARD_KERNEL_CMDLINE := androidboot.selinux=permissive androidboot.hardware=s5e8535 firmware_class.path=/vendor/firmware
+BOARD_KERNEL_CMDLINE := androidboot.hardware=s5e8535 firmware_class.path=/vendor/firmware
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_SOURCE := kernel/samsung/s5e8535
-TARGET_PREBUILT_KERNEL := device/samsung/m14x/prebuilts/kernel
 BOARD_PREBUILT_DTBIMAGE_DIR := device/samsung/m14x/prebuilts/dtb
 BOARD_PREBUILT_DTBOIMAGE := device/samsung/m14x/prebuilts/dtbo.img
 TARGET_KERNEL_CONFIG := s5e8535-m14xnsxx_defconfig
 TARGET_KERNEL_CLANG_COMPILE := true
 TARGET_KERNEL_LLVM_BINUTILS := true
-# Stock Samsung kernel + modern Clang: disable -Werror via make flags
-TARGET_KERNEL_ADDITIONAL_FLAGS := LLVM=1 LLVM_IAS=1 TARGET_SOC=s5e8535 KCFLAGS="-Wno-error -Wno-strict-prototypes -Wno-implicit-int"
+# Kernel release must match the stock vendor_boot modules: 5.15.180-android13-3-31192385
+TARGET_KERNEL_ADDITIONAL_FLAGS := LLVM=1 LLVM_IAS=1 TARGET_SOC=s5e8535 BRANCH=android13-5.15 KMI_GENERATION=3 LOCALVERSION=-31192385 KCFLAGS="-Wno-error -Wno-strict-prototypes -Wno-implicit-int"
 BOARD_BOOT_HEADER_VERSION := 4
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 
