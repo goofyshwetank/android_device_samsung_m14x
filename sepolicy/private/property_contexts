@@ -1,0 +1,8 @@
+# Labels from the stock system_ext, used by the stock vendor policy
+persist.cache_status_32                 u:object_r:cache_status_prop:s0
+persist.cache_status_64                 u:object_r:cache_status_prop:s0
+persist.sns.camera_light                u:object_r:sns_camera_light_prop:s0
+ro.boot.em.did                          u:object_r:boot_em_did_prop:s0
+ro.em.version                           u:object_r:em_version_prop:s0
+ro.factory.factory_binary               u:object_r:exported_system_prop:s0
+vendor.wifi.dualconcurrent.interface    u:object_r:wifi_log_prop:s0

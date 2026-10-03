@@ -135,7 +135,10 @@ endif
 # SELinux
 TARGET_USES_PREBUILT_VENDOR_SEPOLICY := true
 BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
+SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/public
 SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/private
+# Stock vendor policy targets API 33 Samsung system_ext types
+BOARD_SYSTEM_EXT_SEPOLICY_PREBUILT_DIRS := $(DEVICE_PATH)/sepolicy/prebuilt_api
 
 # Wi-Fi: AOSP hostapd is only built when a driver is set
 BOARD_HOSTAPD_DRIVER := NL80211

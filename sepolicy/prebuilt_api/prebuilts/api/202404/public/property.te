@@ -1,0 +1,5 @@
+# Samsung system properties that the stock vendor policy grants access to
+system_public_prop(boot_em_did_prop)
+system_public_prop(cache_status_prop)
+system_public_prop(em_version_prop)
+system_public_prop(sns_camera_light_prop)

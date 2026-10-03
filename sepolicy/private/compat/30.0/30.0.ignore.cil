@@ -1,0 +1,16 @@
+;; new_objects - types introduced with no analogue in 30.0 policy
+(type new_objects)
+(typeattribute new_objects)
+(typeattributeset new_objects
+  ( new_objects
+    boot_em_did_prop
+    cache_status_prop
+    em_version_prop
+    sns_camera_light_prop
+    iso9660
+    udf
+    usb_uvc_config_prop
+    vendor_persist_camera_prop
+    vendor_persist_nfc_prop
+    xtra_control_prop
+  ))
