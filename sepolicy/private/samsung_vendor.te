@@ -1,12 +1,9 @@
 # The stock Samsung vendor HALs poll properties that only Samsung's system
-# sets (persist.sys.sf.hs_mode, dev.sdhms.thermal.hv, mdc.omc.*, ...). They
-# stay unset here and the reads fail harmlessly. This is a compatibility
+# sets (mdc.omc.*, ...). They stay unset here and the reads fail harmlessly. This is a compatibility
 # exception, not a fix. Vendor domain types aren't visible to system_ext
 # policy, so this goes through the public HAL attributes.
 # ponytail: blanket dontaudit per HAL hides any future real read of these
 # prop types; label the props individually if one turns out to matter.
-dontaudit hal_graphics_composer_server system_prop:file read;
-dontaudit hal_thermal_server system_prop:file read;
 dontaudit hal_camera_server { default_prop system_prop }:file read;
 dontaudit hal_sensors_server default_prop:file read;
 dontaudit hal_gnss_server default_prop:file read;
