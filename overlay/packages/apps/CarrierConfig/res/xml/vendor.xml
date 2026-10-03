@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<!-- Read after the per-carrier asset files, so explicit filters are required. -->
+<carrier_config_list>
+    <!-- Reliance Jio: without VoNR the modem sends every call on 5G SA back to LTE (EPS fallback). -->
+    <carrier_config cid="2018" name="Reliance-Jio">
+        <boolean name="vonr_enabled_bool" value="true" />
+    </carrier_config>
+</carrier_config_list>
