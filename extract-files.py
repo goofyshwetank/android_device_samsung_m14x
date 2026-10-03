@@ -30,6 +30,7 @@ blob_fixups: blob_fixups_user_type = {
         .add_line_if_missing('(allow vendor_init_33_0 sysfs_ss_writable (file (write open getattr)))')
         .add_line_if_missing('(allow init_33_0 vendor_shell_33_0 (process (transition rlimitinh siginh noatsecure)))')
         .add_line_if_missing('(allow hal_camera_default fwk_sensor_service (service_manager (find)))')
+        .add_line_if_missing('(allow hal_gnss_default fwk_sensor_service (service_manager (find)))')
         .add_line_if_missing('(type sehradio)')
         .add_line_if_missing('(roletype object_r sehradio)')
         .add_line_if_missing('(typeattributeset domain (sehradio))')
@@ -55,6 +56,7 @@ blob_fixups: blob_fixups_user_type = {
         .add_line_if_missing('(allow rild sehradio (fd (use)))'),
     'vendor/etc/selinux/vendor_file_contexts': blob_fixup()
         .regex_replace(r'(?m)^/sys/kernel/debug/.*\n', '')
+        .add_line_if_missing('/dev/exynos-migov u:object_r:profiler_device:s0')
         .add_line_if_missing('/(vendor|system/vendor)/bin/sehradio u:object_r:sehradio_exec:s0')
         .add_line_if_missing(
             '/(vendor|system/vendor)/bin/hw/android\\.hardware\\.security\\.keymint-service\\.samsung u:object_r:hal_keymint_default_exec:s0'
