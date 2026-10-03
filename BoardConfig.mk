@@ -43,7 +43,7 @@ BOARD_PREBUILT_DTBOIMAGE := device/samsung/m14x/prebuilts/dtbo.img
 TARGET_KERNEL_CONFIG := s5e8535-m14xnsxx_defconfig
 TARGET_KERNEL_CLANG_COMPILE := true
 TARGET_KERNEL_LLVM_BINUTILS := true
-# Kernel release must match the stock vendor_boot modules: 5.15.180-android13-3-31192385
+# Stock vendor modules load by symbol CRC (modversions); keep the GKI release suffix
 TARGET_KERNEL_ADDITIONAL_FLAGS := LLVM=1 LLVM_IAS=1 TARGET_SOC=s5e8535 BRANCH=android13-5.15 KMI_GENERATION=3 LOCALVERSION=-31192385 KCFLAGS="-Wno-error -Wno-strict-prototypes -Wno-implicit-int"
 BOARD_BOOT_HEADER_VERSION := 4
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
