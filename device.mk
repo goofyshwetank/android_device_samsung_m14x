@@ -106,4 +106,7 @@ $(call inherit-product-if-exists, vendor/samsung/m14x/m14x-vendor.mk)
 # crDroid's LatinIME already defines libjni_latinimegoogle, so drop MindTheGapps' copy:
 #   perl -0pi -e 's/cc_prebuilt_library_shared \{\n    name: "libjni_latinimegoogle".*?\n\}\n\n?//s' vendor/gapps/arm64/Android.bp
 #   sed -i -e 's/Phonesky \\/Phonesky/' -e '/libjni_latinimegoogle/d' vendor/gapps/arm64/arm64-vendor.mk
+# Official builds ship without GApps; personal builds: WITH_GMS=true m bacon
+ifeq ($(WITH_GMS),true)
 $(call inherit-product-if-exists, vendor/gapps/arm64/arm64-vendor.mk)
+endif
