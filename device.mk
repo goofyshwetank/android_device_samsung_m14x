@@ -1,6 +1,9 @@
 # Copyright (C) 2026 The LineageOS Project
 # SPDX-License-Identifier: Apache-2.0
 
+# kmod 32 exits before writing modules.dep on the exynos_thermal_v2 cycle.
+$(shell python3 device/samsung/m14x/patches/kmod/apply.py >/dev/null)
+
 # Galaxy F14 5G / M14 5G Exynos (SM-E146B) — codename m14x
 
 PRODUCT_DEVICE := m14x
