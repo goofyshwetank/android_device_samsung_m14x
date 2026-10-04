@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--
+  From s5e8535 android_device_samsung_s5e8535-common ims branch
+  (commit 42bd4a8ae). Video telephony stays available; that tree gates it off
+  for the first ImsStack test.
+-->
+<carrier_config_list>
+    <carrier_config>
+        <boolean name="carrier_volte_available_bool" value="true" />
+        <boolean name="carrier_vt_available_bool" value="true" />
+        <boolean name="imssms.sms_over_ims_supported_bool" value="true" />
+
+        <boolean name="carrier_wfc_ims_available_bool" value="true" />
+        <boolean name="carrier_wfc_supports_wifi_only_bool" value="true" />
+        <boolean name="carrier_default_wfc_ims_enabled_bool" value="true" />
+        <int name="carrier_default_wfc_ims_mode_int" value="2" />
+
+        <!-- Userspace IMS has no EVS. Offering it glitches the call. -->
+        <boolean name="imsvoice.audio_evs_support_bool" value="false" />
+
+        <!-- Legacy Samsung data HAL: break-before-make, no IMS QosCallback. -->
+        <boolean name="delay_ims_tear_down_until_call_end_bool" value="true" />
+
+        <string-array name="iwlan_handover_policy_string_array" num="5">
+            <item value="source=EUTRAN|NGRAN, target=IWLAN, type=disallowed, capabilities=IMS|EIMS" />
+            <item value="source=IWLAN, target=EUTRAN|NGRAN, type=disallowed, capabilities=IMS|EIMS" />
+            <item value="source=IWLAN, target=GERAN|UTRAN, type=disallowed" />
+            <item value="source=GERAN|UTRAN, target=IWLAN, type=disallowed" />
+            <item value="source=GERAN|UTRAN|EUTRAN|NGRAN|IWLAN|UNKNOWN, target=GERAN|UTRAN|EUTRAN|NGRAN|IWLAN, type=allowed" />
+        </string-array>
+    </carrier_config>
+</carrier_config_list>

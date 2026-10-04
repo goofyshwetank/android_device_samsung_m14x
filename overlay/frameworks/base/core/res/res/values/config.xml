@@ -185,6 +185,20 @@
     <!-- Flag specifying whether VT is available on device -->
     <bool name="config_device_vt_available">true</bool>
 
+    <!-- VoWiFi (WFC) toggle. Carrier side is overlay CarrierConfig vendor.xml -->
+    <bool name="config_device_wfc_ims_available">true</bool>
+
+    <!-- Userspace IMS (PhhIms) is VoIP, not a modem CP call. CP mode opens the
+         voice-call mic path and feeds the earpiece back as echo. -->
+    <bool name="config_use_voip_mode_for_ims">true</bool>
+
+    <string-array name="config_serviceStateLocationAllowedPackages" translatable="false">
+        <item>com.android.phone</item>
+        <item>com.android.systemui</item>
+        <item>com.android.shell</item>
+        <item>me.phh.ims</item>
+    </string-array>
+
     <!-- Should the pinner service pin the Home application? -->
     <bool name="config_pinnerHomeApp">true</bool>
 
