@@ -54,3 +54,12 @@ dalvik.vm.heapsize=512m
 dalvik.vm.heaptargetutilization=0.6
 dalvik.vm.heapminfree=8m
 dalvik.vm.heapmaxfree=16m
+
+# RIL — ePDG is the VoWiFi gateway. def_network 26 is stock NR/LTE/GSM/WCDMA
+# (s5e8535 common uses 9, which is LTE-only)
+ro.radio.noril=no
+ro.carrier=unknown
+ro.telephony.default_cdma_sub=0
+ro.telephony.default_network=26
+ro.vendor.epdg.support=true
+ro.vendor.sec.radio.def_network=26

@@ -99,6 +99,12 @@ PRODUCT_SOONG_NAMESPACES += \
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 PRODUCT_ENFORCE_RRO_TARGETS := *
 
+# Call echo: drop the back mic and load AEC/NS. Listed before the vendor
+# makefile so these win over the proprietary copies.
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
+    $(LOCAL_PATH)/configs/audio/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml
+
 # Inherit proprietary blobs when extracted
 $(call inherit-product-if-exists, vendor/samsung/m14x/m14x-vendor.mk)
 
