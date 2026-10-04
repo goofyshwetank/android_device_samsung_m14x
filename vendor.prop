@@ -1,5 +1,5 @@
 ## Bluetooth
-bluetooth.device.default_name=Galaxy M14 5G
+bluetooth.device.default_name=Galaxy F14 5G
 
 ## NFC
 ro.vendor.nfc.feature.chipname=NXP_SN100U
@@ -17,3 +17,11 @@ ro.vendor.nfc.info.antposY=30
 ro.vendor.nfc.info.deviceWidth=77.2
 ro.vendor.nfc.info.deviceHeight=166.8
 ro.vendor.nfc.info.deviceFoldable=false
+
+# F14 radio. 26 is stock NR/LTE/GSM/WCDMA. The common prop file ships 9.
+ro.radio.noril=no
+ro.carrier=unknown
+ro.telephony.default_cdma_sub=0
+ro.telephony.default_network=26
+ro.vendor.epdg.support=true
+ro.vendor.sec.radio.def_network=26

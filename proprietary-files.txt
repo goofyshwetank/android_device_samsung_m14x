@@ -68,17 +68,6 @@ vendor/etc/gnss/gps.debug.cfg
 vendor/etc/gnss/gps.issuetracker.cfg
 vendor/etc/gnss/hardware_factors.conf
 
-# NFC
-vendor/bin/hw/nxp.android.hardware.nfc@1.2-service
-vendor/etc/init/nxp.android.hardware.nfc@1.2-service.rc
-vendor/etc/init/init.nfc.samsung.rc
-vendor/etc/vintf/manifest/nxp.android.hardware.nfc@1.2-service.xml
-vendor/lib64/nfc_nci_nxpsn.so
-vendor/lib64/vendor.samsung.hardware.nfc@2.0.so
-vendor/etc/libnfc-nxp.conf
-vendor/etc/nfc/libnfc-nxp_RF.conf
-vendor/firmware/nfc/libpn557_fw.so
-
 # Sensors
 vendor/lib/sensors.grip.so
 vendor/lib/sensors.inputvirtual.so

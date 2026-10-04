@@ -1,0 +1,22 @@
+[
+  {
+    "repository": "android_device_samsung_s5e8535-common",
+    "target_path": "device/samsung/s5e8535-common",
+    "branch": "lineage-23.2"
+  },
+  {
+    "repository": "android_device_samsung_slsi_sepolicy",
+    "target_path": "device/samsung_slsi/sepolicy",
+    "branch": "lineage-23.2"
+  },
+  {
+    "repository": "android_kernel_samsung_s5e8_fork535",
+    "target_path": "kernel/samsung/s5e8535",
+    "branch": "lineage-23.2"
+  },
+  {
+    "repository": "android_vendor_samsung_m14x",
+    "target_path": "vendor/samsung/m14x",
+    "branch": "lineage-23.2"
+  }
+]

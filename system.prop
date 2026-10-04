@@ -1,0 +1,12 @@
+# System properties — starter (refine from dumps)
+ro.sf.lcd_density=450
+ro.product.first_api_level=33
+
+# IMS (PhhIms): expose VoLTE and VoWiFi toggles without per-carrier CarrierConfig
+persist.dbg.volte_avail_ovr=1
+persist.dbg.wfc_avail_ovr=1
+persist.dbg.allow_ims_off=1
+
+# Moved from vendor: vendor_init may not set these
+ro.input.resampling=0
+ro.sf.blurs_are_expensive=1

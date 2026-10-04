@@ -36,8 +36,6 @@ blob_fixups: blob_fixups_user_type = {
         .add_needed('libui_shim.so'),
     'vendor/lib64/libsensorlistener.so': blob_fixup()
         .add_needed('libsensorndkbridge_shim.so'),
-    'vendor/lib64/nfc_nci_nxpsn.so': blob_fixup()
-        .add_needed('libbase_shim.so'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(

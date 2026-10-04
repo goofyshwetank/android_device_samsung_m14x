@@ -21,7 +21,7 @@ $(call inherit-product, device/samsung/m14x/device.mk)
 PRODUCT_NAME := lineage_m14x
 PRODUCT_DEVICE := m14x
 PRODUCT_BRAND := samsung
-PRODUCT_MODEL := SM-M146B
+PRODUCT_MODEL := SM-E146B
 PRODUCT_MANUFACTURER := samsung
 
 PRODUCT_GMS_CLIENTID_BASE := android-samsung
