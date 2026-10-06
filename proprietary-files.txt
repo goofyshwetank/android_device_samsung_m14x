@@ -5,7 +5,7 @@ vendor/lib/soundfx/libswdap.so
 vendor/lib64/soundfx/libswdap.so
 
 # Camera
-vendor/lib64/hw/camera.s5e8535.so
+vendor/lib64/hw/camera.s5e8535.so;DISABLE_CHECKELF
 
 ## Camera Dependencies
 vendor/lib64/libIRTA.so
