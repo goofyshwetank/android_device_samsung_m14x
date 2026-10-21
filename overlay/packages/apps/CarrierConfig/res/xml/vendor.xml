@@ -18,6 +18,10 @@
         <!-- Userspace IMS has no EVS. Offering it glitches the call. -->
         <boolean name="imsvoice.audio_evs_support_bool" value="false" />
 
+        <!-- PhhIms: Conference merge is not implemented in userspace SIP stack. Hide merge button to prevent failed merge calls. -->
+        <boolean name="support_conference_call_bool" value="false" />
+        <boolean name="support_ims_conference_call_bool" value="false" />
+
         <!-- Legacy Samsung data HAL: break-before-make, no IMS QosCallback. -->
         <boolean name="delay_ims_tear_down_until_call_end_bool" value="true" />
 
