@@ -1,0 +1,30 @@
+From bac8241d3df28909cfb07db236156c562bbaff42 Mon Sep 17 00:00:00 2001
+From: goofyshwetank <raiishu989@gmail.com>
+Date: Wed, 21 Oct 2026 04:50:46 +0000
+Subject: [PATCH] permission: allow updated privileged system apps to receive
+ allowlisted permissions
+
+---
+ .../permission/access/permission/AppIdPermissionPolicy.kt    | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/services/permission/java/com/android/server/permission/access/permission/AppIdPermissionPolicy.kt b/services/permission/java/com/android/server/permission/access/permission/AppIdPermissionPolicy.kt
+index e61cb9d7a..8b1f55081 100644
+--- a/services/permission/java/com/android/server/permission/access/permission/AppIdPermissionPolicy.kt
++++ b/services/permission/java/com/android/server/permission/access/permission/AppIdPermissionPolicy.kt
+@@ -1675,9 +1675,10 @@ class AppIdPermissionPolicy : SchemePolicy() {
+                     val disabledSystemPackageState =
+                         newState.externalState.disabledSystemPackageStates[packageState.packageName]
+                     val disabledSystemPackage = disabledSystemPackageState?.androidPackage
+-                    disabledSystemPackage != null &&
++                    (disabledSystemPackage != null &&
+                         permission.name in disabledSystemPackage.requestedPermissions &&
+-                        shouldGrantPrivilegedOrOemPermission(disabledSystemPackageState, permission)
++                        shouldGrantPrivilegedOrOemPermission(disabledSystemPackageState, permission)) ||
++                        shouldGrantPrivilegedOrOemPermission(packageState, permission)
+                 } else {
+                     shouldGrantPrivilegedOrOemPermission(packageState, permission)
+                 }
+-- 
+2.43.0
+

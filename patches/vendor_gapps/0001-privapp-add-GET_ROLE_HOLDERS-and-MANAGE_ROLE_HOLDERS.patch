@@ -1,0 +1,55 @@
+From 5e959f951b1829252b85d09bdc1a5ea3c7a0d674 Mon Sep 17 00:00:00 2001
+From: goofyshwetank <raiishu989@gmail.com>
+Date: Wed, 21 Oct 2026 04:50:46 +0000
+Subject: [PATCH] privapp: add GET_ROLE_HOLDERS and MANAGE_ROLE_HOLDERS for GMS
+
+---
+ arm64/Android.bp                                            | 6 ------
+ arm64/arm64-vendor.mk                                       | 3 +--
+ .../etc/permissions/privapp-permissions-google-product.xml  | 2 ++
+ 3 files changed, 3 insertions(+), 8 deletions(-)
+
+diff --git a/arm64/Android.bp b/arm64/Android.bp
+index 5646a29..37a0ca1 100644
+--- a/arm64/Android.bp
++++ b/arm64/Android.bp
+@@ -107,9 +107,3 @@ android_app_import {
+     product_specific: true,
+ }
+ 
+-cc_prebuilt_library_shared {
+-    name: "libjni_latinimegoogle",
+-    srcs: ["proprietary/product/lib64/libjni_latinimegoogle.so"],
+-    prefer: true,
+-    product_specific: true,
+-}
+diff --git a/arm64/arm64-vendor.mk b/arm64/arm64-vendor.mk
+index af0154a..a6f9aa6 100644
+--- a/arm64/arm64-vendor.mk
++++ b/arm64/arm64-vendor.mk
+@@ -6,8 +6,7 @@ PRODUCT_SOONG_NAMESPACES += \
+ 
+ PRODUCT_PACKAGES += \
+     GmsCore \
+-    Phonesky \
+-    libjni_latinimegoogle
++    Phonesky
+ 
+ ifeq ($(TARGET_IS_GROUPER),)
+ PRODUCT_PACKAGES += \
+diff --git a/common/proprietary/product/etc/permissions/privapp-permissions-google-product.xml b/common/proprietary/product/etc/permissions/privapp-permissions-google-product.xml
+index 78f46a0..32022bc 100644
+--- a/common/proprietary/product/etc/permissions/privapp-permissions-google-product.xml
++++ b/common/proprietary/product/etc/permissions/privapp-permissions-google-product.xml
+@@ -220,6 +220,8 @@ It allows additional grants on top of privapp-permissions-platform.xml
+         <permission name="android.permission.START_FOREGROUND_SERVICES_FROM_BACKGROUND"/>
+     </privapp-permissions>
+     <privapp-permissions package="com.google.android.gms">
++        <permission name="android.permission.GET_ROLE_HOLDERS"/>
++        <permission name="android.permission.MANAGE_ROLE_HOLDERS"/>
+         <permission name="android.permission.ACCESS_BROADCAST_RESPONSE_STATS"/>
+         <permission name="android.permission.ACCESS_CACHE_FILESYSTEM"/>
+         <permission name="android.permission.ACCESS_CONTEXT_HUB"/>
+-- 
+2.43.0
+
