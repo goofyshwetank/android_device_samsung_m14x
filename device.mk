@@ -61,3 +61,14 @@ PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/configs/permissions/privapp-permissions-com.m14x.bandpref.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-com.m14x.bandpref.xml
 
 PRODUCT_SOONG_NAMESPACES += $(DEVICE_PATH)
+
+# Software KeyMint
+PRODUCT_PACKAGES += \
+    android.hardware.security.keymint-service
+
+# Userdebug & ADB defaults
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    ro.debuggable=1 \
+    ro.secure=0 \
+    ro.adb.secure=0 \
+    persist.sys.usb.config=adb
