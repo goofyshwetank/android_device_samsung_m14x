@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Folder and popup blurs are full enough to hit the 3-pass Kawase path at 450 dpi.
+  3dp stays under 10px (one pass). See SystemUI max_shade_window_blur_radius.
+-->
+<resources>
+    <dimen name="folder_blur_radius">3dp</dimen>
+    <dimen name="popup_blur_radius">3dp</dimen>
+</resources>
